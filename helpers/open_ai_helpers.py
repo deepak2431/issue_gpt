@@ -13,54 +13,95 @@ load_dotenv()
 
 # embedding model parameters
 embedding_model = "text-embedding-ada-002"
-embedding_encoding = "cl100k_base"  # this the encoding for text-embedding-ada-002
-max_tokens = 8000  # the maximum for text-embedding-ada-002 is 8191
+embedding_encoding = "cl100k_base"
+max_tokens = 8000
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-def generate_embeddings(df, pprint=True):
-    df["combined"] = (
-        "Issue description: "
-        + df.issue_description.str.strip()
-        + "; Issue Title: "
-        + df.issue_title.str.strip()
-    )
+class SearchIssue:
 
-    embedding = get_embedding(df, model='text-embedding-ada-002')
-    df['similarities'] = df.ada_embedding.apply(lambda x: cosine_similarity(x, embedding))
-    res = df.sort_values('similarities', ascending=False).head(n)
-    return res
+    """
+    Class SearchIssue:
 
+    Parameters:
+    df (DataFrame): A DataFrame of issues.
 
-def find_similar_issues(prompt, embeddings, threshold=0.8):
-    similar_issues = []
+    Methods:
+    generate_embeddings():
+    Generates OpenAI embeddings for the combined issue title and description.
 
-    # Generate an embedding for the prompt text
-    response = openai.Completion.create(
-        engine="text-embedding-ada-002",
-        prompt=f"Generate a 50-dimensional embedding for the following text: {prompt}",
-        max_tokens=50,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
+    Functionality:
+    - Combines the issue title and description into a single column "combined"
+    - Generates an embedding for each issue using the OpenAI text-embedding-ada-002 model
+    - Adds an "embedding" column to the DataFrame with the embeddings
+    - Returns the DataFrame
 
-    prompt_embedding = response.choices[0].text.strip()
+    find_similar_issues():
+    Finds the n most similar issues to a new issue based on cosine similarity of the OpenAI embeddings.
 
-    # Compare the prompt embedding with existing embeddings
-    for index, embedding in enumerate(embeddings):
-        similarity = openai.Completion.create(
-            engine="text-embedding-ada-002",
-            prompt=f"Compute the cosine similarity between the following two embeddings:\nEmbedding 1: {prompt_embedding}\nEmbedding 2: {embedding}\nSimilarity:",
-            max_tokens=10,
-            n=1,
-            stop=None,
-            temperature=0.5,
+    Parameters:
+    new_issue (str): The text of the new issue.
+    n (int): The number of similar issues to return.
+    pprint (bool): Whether to print the first 200 characters of each result.
+
+    Functionality:
+    - Generates an embedding for the new_issue using the OpenAI text-embedding-ada-002 model
+    - Calculates the cosine similarity between the new issue embedding and all issue embeddings
+    - Adds a "similarity" column to the DataFrame with the cosine similarities
+    - Filters to only keep issues with similarity &gt; 0.8
+    - Sorts by similarity in descending order and takes the top n results
+    - Replaces "Issue title: " and "; Issue description:" with empty strings
+    - Optionally prints the first 200 characters of each result
+    - Returns the top n similar issues
+    """
+
+    def __init__(self, df) -> None:
+        self.df = df
+
+    def generate_embeddings(self):
+        self.df["combined"] = (
+            "Issue description: "
+            + self.df.issue_description.str.strip()
+            + "; Issue Title: "
+            + self.df.issue_title.str.strip()
         )
 
-        similarity_score = float(similarity.choices[0].text.strip())
-        if similarity_score >= threshold:
-            similar_issues.append((index, similarity_score))
+        self.df["embedding"] = self.df.combined.apply(
+            lambda x: get_embedding(x, engine=embedding_model)
+        )
 
-    # Sort the similar issues by their similarity score
-    similar_issues.sort(key=lambda x: x[1], reverse=True)
-    return similar_issues
+        return self.df
+
+    def find_similar_issues(self, new_issue, n=3, pprint=True):
+        issue_embedding = get_embedding(new_issue, engine="text-embedding-ada-002")
+        self.df["similarity"] = self.df.embedding.apply(
+            lambda x: cosine_similarity(x, issue_embedding)
+        )
+
+        threshold = 0.8
+
+        results = (
+            self.df.sort_values("similarity", ascending=False)
+            .query("similarity > @threshold")
+            .head(n)
+            .combined.str.replace("Issue title: ", "")
+            .str.replace("; Issue description:", ": ")
+        )
+
+        similar_issues = []
+
+        for r in results:
+            issues_document = r[:500]
+            issues_body = issues_document.split(";")
+            issue_description = issues_body[0]
+            issues_title = issues_body[1]
+
+            similar_issues.append(
+                {
+                    "issues_title": issues_title.split(":")[1].strip(),
+                    "issues_description": issue_description.split(":")[1].strip(),
+                }
+            )
+
+        return similar_issues

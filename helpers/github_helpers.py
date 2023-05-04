@@ -9,9 +9,24 @@ from github import Github
 load_dotenv()
 
 
-def get_issues(repo_name):
+class GithubAPI:
+
     """
-    Gets all issues for a given GitHub repository and writes them to a file.
+    Class GithubAPI:
+
+    Parameters:
+    repo_name (str): The name of the GitHub repository in the format "owner/repo_name".
+
+    Functionality:
+    - Gets an access token from the environment variable GITHUB_ACCESS_TOKEN.
+    - Creates a Github object to access the GitHub API.
+    - Gets the repository object from the repo_name.
+    - Gets all open issues from the repository.
+    - Returns the issues as a Pandas DataFrame.
+
+    Methods:
+    get_issues():
+    Gets all issues for a given GitHub repository.
 
     Parameters:
     repo_name (str): The name of the GitHub repository in the format "owner/repo_name".
@@ -22,15 +37,19 @@ def get_issues(repo_name):
     - Creates a Github object to access the GitHub API.
     - Gets the repository object from the repo_name.
     - Gets all open issues from the repository.
-    - Writes the issue titles and descriptions to the file_name.
+    - Returns the issues as a Pandas DataFrame.
     """
 
-    github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
-    g = Github(github_access_token)
-    repo = g.get_repo(repo_name)
+    def __init__(self, repo_name) -> None:
+        self.repo_name = repo_name
 
-    issues = []
-    for issue in repo.get_issues(state="all"):
-        issues.append({"issue_title": issue.title, "issue_description": issue.body})
+    def get_issues(self):
+        github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
+        g = Github(github_access_token)
+        repo = g.get_repo(self.repo_name)
 
-    return pd.DataFrame(issues)
+        issues = []
+        for issue in repo.get_issues(state="all"):
+            issues.append({"issue_title": issue.title, "issue_description": issue.body})
+
+        return pd.DataFrame(issues)

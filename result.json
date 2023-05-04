@@ -1,0 +1,10 @@
+[
+    {
+        "issues_title": "Code for generating embeddings",
+        "issues_description": "Implement code for generating the embeddings of the document"
+    },
+    {
+        "issues_title": "Write code for generating embeddings with the text document",
+        "issues_description": "Implement code embeddings generation from the github issue document"
+    }
+]
