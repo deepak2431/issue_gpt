@@ -1,18 +1,20 @@
-from helpers.github_helpers import GithubAPI
-from helpers.open_ai_helpers import SearchIssue
-
 from pprint import pprint
 import json
-
-repo_name = "deepak2431/djangoBlog"
-
-github_api = GithubAPI(repo_name=repo_name)
-df = github_api.get_issues()
-
-issue_searcher = SearchIssue(df)
-issue_searcher.generate_embeddings()
-similar_issue = issue_searcher.find_similar_issues(new_issue="draft post", n=3)
+from flask import Flask, jsonify
 
 
-with open("result.json", "w") as f:
-    json.dump(similar_issue, f, indent=4)
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return "Welcome, Server running successfully!"
+
+@app.route("/webhooks", methods=['POST'])
+def github_webhooks():
+    return "This is webhooks endpoint!"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
