@@ -1,3 +1,4 @@
+import logging
 import os
 import json
 from dotenv import load_dotenv
@@ -10,6 +11,10 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 from github import Github
 
 load_dotenv()
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # embedding model parameters
 embedding_model = "text-embedding-ada-002"
@@ -58,8 +63,10 @@ class SearchIssue:
 
     def __init__(self, df) -> None:
         self.df = df
+        logger.info("SearchIssue object initialized.")
 
     def generate_embeddings(self):
+        logger.info("Generating embeddings...")
         self.df["combined"] = (
             "Issue description: "
             + self.df.issue_description.str.strip()
@@ -71,9 +78,11 @@ class SearchIssue:
             lambda x: get_embedding(x, engine=embedding_model)
         )
 
+        logger.info("Embeddings generated.")
         return self.df
 
     def find_similar_issues(self, new_issue, n=3, pprint=True):
+        logger.info(f"Finding {n} most similar issues to '{new_issue}'...")
         issue_embedding = get_embedding(new_issue, engine="text-embedding-ada-002")
         self.df["similarity"] = self.df.embedding.apply(
             lambda x: cosine_similarity(x, issue_embedding)
@@ -92,16 +101,17 @@ class SearchIssue:
         similar_issues = []
 
         for r in results:
-            issues_document = r[:500]
+            issues_document = r[:50000]
             issues_body = issues_document.split(";")
             issue_description = issues_body[0]
             issues_title = issues_body[1]
 
             similar_issues.append(
                 {
-                    "issues_title": issues_title.split(":")[1].strip(),
-                    "issues_description": issue_description.split(":")[1].strip(),
+                    "issues_title": issues_title.split(":", 1)[1].strip(),
+                    "issues_description": issue_description.split(":", 1)[1].strip(),
                 }
             )
 
+        logger.info(f"{n} most similar issues found.")
         return similar_issues

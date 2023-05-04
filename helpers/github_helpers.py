@@ -8,6 +8,12 @@ from github import Github
 
 load_dotenv()
 
+# Setup logging
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 class GithubAPI:
 
@@ -42,14 +48,18 @@ class GithubAPI:
 
     def __init__(self, repo_name) -> None:
         self.repo_name = repo_name
+        logger.info(f"GithubAPI object initialized for {repo_name}.")
 
     def get_issues(self):
+        logger.info(f"Getting issues for {self.repo_name}...")
         github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
         g = Github(github_access_token)
         repo = g.get_repo(self.repo_name)
 
         issues = []
-        for issue in repo.get_issues(state="all"):
+        for issue in repo.get_issues(state="open"):
             issues.append({"issue_title": issue.title, "issue_description": issue.body})
 
-        return pd.DataFrame(issues)
+        df = pd.DataFrame(issues)
+        logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")
+        return df

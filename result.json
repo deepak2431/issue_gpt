@@ -1,10 +1,10 @@
 [
     {
-        "issues_title": "Code for generating embeddings",
-        "issues_description": "Implement code for generating the embeddings of the document"
+        "issues_title": "Add features to draft the post",
+        "issues_description": "While writing the post the users should have a option to save the post inbetween while writing. The users can complete their draft posts and post it later."
     },
     {
-        "issues_title": "Write code for generating embeddings with the text document",
-        "issues_description": "Implement code embeddings generation from the github issue document"
+        "issues_title": "Improve the post writing page",
+        "issues_description": "As currently the default django post create,delete and update views have been used in the application. The following changes is expected after taking over this issue:\r\nThere should be three sections for any post:\r\na)Title\r\nb) Tags\r\nc) Content\r\nFollowing changes are also expected:\r\n1. Change the UI of the Create Post page as no box should be displayed just a heading  for each purpose and after that space for writing the content.\r\n2. Add option to change the font size and style while writing the post.\r\n3. Add option to add links.\r\n4. Add option to highlight any content.\r\n5. Add option to add GIFS.\r\n6. Add option to add images of custom size while writing the post.\r\n\r\nYou can refer medium.com or dev.to for reference.\r\nThanks:)"
     }
 ]
