@@ -1,9 +1,10 @@
 from pprint import pprint
 
 import json
+import asyncio
 from flask import Flask, jsonify, request, abort
 
-from resources.github_app import verify_webhook_signature
+from resources.github_app import verify_webhook_signature, process_webhooks
 from log_mod import logger
 
 
@@ -18,7 +19,9 @@ def home():
 @app.route("/webhooks", methods=["POST"])
 def receive_github_webhook():
     """Receive and verify GitHub webhook."""
+
     logger.info("GitHub webhook received.")
+
     # Retrieve the signature from the request header
     signature = request.headers.get("X-Hub-Signature-256")
     if not signature:
@@ -44,10 +47,7 @@ def receive_github_webhook():
     elif content_type == "application/json":
         payload = request.get_json()
     else:
-        abort(400, "Unsupported content type")
-
-    with open("hooks.json", "w") as f:
-        json.dump(payload, f, indent=4)
+        logger.error("Unsupported content type")
 
     # Return a success response
     logger.info("Returning 200 response.")

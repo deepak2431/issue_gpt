@@ -2,8 +2,8 @@ import os
 import json
 from dotenv import load_dotenv
 import pandas as pd
+import requests
 
-import openai
 from github import Github
 
 load_dotenv()
@@ -46,15 +46,16 @@ class GithubAPI:
     - Returns the issues as a Pandas DataFrame.
     """
 
-    def __init__(self, repo_name) -> None:
+    def __init__(self, repo_name, owner) -> None:
         self.repo_name = repo_name
+        self.owner = owner
         logger.info(f"GithubAPI object initialized for {repo_name}.")
 
     def get_issues(self):
         logger.info(f"Getting issues for {self.repo_name}...")
         github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
         g = Github(github_access_token)
-        repo = g.get_repo(self.repo_name)
+        repo = g.get_repo(self.owner / self.repo_name)
 
         issues = []
         for issue in repo.get_issues(state="open"):
@@ -63,3 +64,27 @@ class GithubAPI:
         df = pd.DataFrame(issues)
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")
         return df
+
+    def add_comments(self, issue_number):
+        """Add a comment to an issue."""
+
+        comment_url = f"https://api.github.com/repos/{self.owner}/{self.repo_name}/issues/{issue_number}/comments"
+
+        headers = {
+            "Authorization": f'Bearer {os.getenv("GITHUB_ACCESS_TOKEN")}',
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+
+        comment_data = {"body": "This is a test comment feature"}
+
+        response = requests.post(comment_url, headers=headers, json=comment_data)
+
+        if response.status_code == 201:
+            logger.info(f"Comment added to issue #{issue_number}.")
+            return 1
+        else:
+            logger.warning(
+                f"Failed to add comment to issue #{issue_number}. Response: {response.text}"
+            )
+            return 0
