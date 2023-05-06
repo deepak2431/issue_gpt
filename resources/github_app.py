@@ -55,18 +55,33 @@ def parse_webhooks(data):
     }
 
 
-def check_similar_issue():
-    repo_name = "deepak2431/djangoBlog"
 
-    github_api = GithubAPI(repo_name=repo_name)
+def check_similar_issue(owner, repo, issue_title, issue_body):
+    """Check if a similar issue already exists."""
+    
+    logger.info(f"Checking for similar issues in {owner}/{repo}...")
+    github_api = GithubAPI(repo_name=repo, owner=owner)
     df = github_api.get_issues()
 
     issue_searcher = SearchIssue(df)
     issue_searcher.generate_embeddings()
-    similar_issue = issue_searcher.find_similar_issues(new_issue="draft post", n=3)
 
-    with open("result.json", "w") as f:
-        json.dump(similar_issue, f, indent=4)
+    # generate the issue with the combined body, title for embeddings
+    issue_combined = (
+        "Issue description: "
+        + issue_body.strip()
+        + "; Issue Title: "
+        + issue_title.strip()
+    )
+
+    similar_issues = issue_searcher.find_similar_issues(new_issue=issue_combined, n=3)
+
+    if len(similar_issues) > 0:
+        logger.info(f"{len(similar_issues)} similar issues found.")
+        return True
+    else:
+        logger.info("No similar issues found.")
+        return False  
 
 
 def post_comments(issue_number, owner, repo):
@@ -120,19 +135,32 @@ def process_webhooks(webhooks_data):
 
     if parsed_data["action"] == "opened":
         # Add a comment to the issue
-        status = post_comments(
-            issue_number=parsed_data["issue_number"],
+
+        # check if there's an similar issue
+        similar_issue_found = check_similar_issue(
             owner=parsed_data["owner"],
             repo=parsed_data["repo"],
+            issue_title=parsed_data["title"],
+            issue_body=parsed_data["body"],
         )
 
-        # Log the result
-        if status:
-            logger.info("Comment added successfully.")
-        else:
-            logger.warning("Failed to add comment.")
+        if similar_issue_found:
+            status = post_comments(
+                issue_number=parsed_data["issue_number"],
+                owner=parsed_data["owner"],
+                repo=parsed_data["repo"],
+            )
 
-        return
+            # Log the result
+            if status:
+                logger.info("Comment added successfully.")
+            else:
+                logger.warning("Failed to add comment.")
+
+            return
+        else:
+            logger.info("No similar issues found")
+
     else:
         logger.info("Ignoring issues as other then opened")
         return

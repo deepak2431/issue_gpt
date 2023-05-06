@@ -55,7 +55,7 @@ class GithubAPI:
         logger.info(f"Getting issues for {self.repo_name}...")
         github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
         g = Github(github_access_token)
-        repo = g.get_repo(self.owner / self.repo_name)
+        repo = g.get_repo(f"{self.owner}/{self.repo_name}")
 
         issues = []
         for issue in repo.get_issues(state="open"):
