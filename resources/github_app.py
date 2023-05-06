@@ -37,6 +37,7 @@ def parse_webhooks(data):
     logger.info("Parsing webhook payload...")
 
     # extracts the owner, repo name, issue number, title and body from the JSON data
+    action = data["action"]
     owner = data["repository"]["owner"]["login"]
     repo = data["repository"]["name"]
     issue_number = data["issue"]["number"]
@@ -46,6 +47,7 @@ def parse_webhooks(data):
     # returns the extracted details
     return {
         "owner": owner,
+        "action": action,
         "repo": repo,
         "issue_number": issue_number,
         "title": issue_title,
@@ -67,8 +69,7 @@ def check_similar_issue():
         json.dump(similar_issue, f, indent=4)
 
 
-
-async def post_comments(issue_number, owner, repo):
+def post_comments(issue_number, owner, repo):
     """Add a comment to a GitHub issue.
 
     Args:
@@ -91,8 +92,7 @@ async def post_comments(issue_number, owner, repo):
     return status
 
 
-
-async def process_webhooks(webhooks_data): 
+def process_webhooks(webhooks_data):
     """
     Process GitHub webhooks and add comments to issues.
 
@@ -114,17 +114,25 @@ async def process_webhooks(webhooks_data):
     # Parse the webhook payload
     parsed_data = parse_webhooks(data=webhooks_data)
 
-    # Add a comment to the issue
-    status = await post_comments(
-        issue_number=parsed_data["issue_number"],
-        owner=parsed_data["owner"],
-        repo=parsed_data["repo"],
-    )
+    webhook_action = parsed_data["action"]
 
-    # Log the result
-    if status: 
-        logger.info("Comment added successfully.")
-    else: 
-        logger.warning("Failed to add comment.")
-    
-    return
+    logger.info(f"Processing GitHub webhooks with action {webhook_action}")
+
+    if parsed_data["action"] == "opened":
+        # Add a comment to the issue
+        status = post_comments(
+            issue_number=parsed_data["issue_number"],
+            owner=parsed_data["owner"],
+            repo=parsed_data["repo"],
+        )
+
+        # Log the result
+        if status:
+            logger.info("Comment added successfully.")
+        else:
+            logger.warning("Failed to add comment.")
+
+        return
+    else:
+        logger.info("Ignoring issues as other then opened")
+        return

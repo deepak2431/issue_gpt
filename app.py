@@ -1,10 +1,10 @@
-from pprint import pprint
-
 import json
-import asyncio
+import threading
 from flask import Flask, jsonify, request, abort
 
 from resources.github_app import verify_webhook_signature, process_webhooks
+from redis_broker.redis_service import init_redis_client
+from redis_broker.redis_consumer import consume_messages
 from log_mod import logger
 
 
@@ -49,6 +49,17 @@ def receive_github_webhook():
     else:
         logger.error("Unsupported content type")
 
+    redis_client = init_redis_client()
+
+    # create the data to publish
+    data = {
+        "channel_name": "issue_create",
+        "payload": payload,
+    }
+
+    # publish the lock status to the redis client
+    redis_client.publish("issue_create", json.dumps(data))
+
     # Return a success response
     logger.info("Returning 200 response.")
     return "Webhook received and verified", 200
@@ -56,4 +67,8 @@ def receive_github_webhook():
 
 if __name__ == "__main__":
     logger.info("Starting the server")
+
+    # init redis thread process
+    redis_thread = threading.Thread(target=consume_messages, daemon=True)
+    redis_thread.start()
     app.run(debug=True, host="0.0.0.0", port=8080)
