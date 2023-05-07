@@ -1,1 +1,50 @@
+.overview {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  column-gap: 30px;
+}
 
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #071021 ;
+}
+.sidebar p {
+  color: white;
+}
+
+.sidebar_header {
+  padding-top: 20px;
+  text-align: center;
+  font-size: larger;
+}
+
+.sidebar_nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.btn-nav {
+  background-color: #071021;
+  color: white;
+  border: none;
+  font-size: large;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  display: flex; 
+  align-items: center; 
+}
+.btn-nav:hover, .btn-nav:active {
+  background-color: #1c283d;
+
+}
+
+.sidebar_icon {
+  margin-right: 5px;
+}

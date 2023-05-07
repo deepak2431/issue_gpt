@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import Overview from './pages/Overview';
 
-function App() {
+
+
+const App = () => {
   return (
     <div className="App">
-      <p>Issus Checker App</p>
+      <Overview />
     </div>
   );
 }
