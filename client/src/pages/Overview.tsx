@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import InputForm from "../components/InputForm";
+import Settings from "./Settings";
 
 const Overview = () => {
 
@@ -9,8 +9,8 @@ const Overview = () => {
             <div className="overview_sidebar">
                 <Sidebar />
             </div>
-            <div className="overview_content">
-                <InputForm />
+            <div className="settings">
+                <Settings />
             </div>
         </div>
     )

@@ -1,9 +1,16 @@
 import React from 'react';
 
-const  Button = () => {
+interface IProps {
+    text: string
+    onPress?: () => void
+}
+
+const  Button : React.FC<IProps> = ({ text, onPress }) => {
     return(
         <div className='button'>
-            This is a button component
+            <button className='btn-component' onClick={onPress}>
+                {text}
+            </button>
         </div>
     )
 }
