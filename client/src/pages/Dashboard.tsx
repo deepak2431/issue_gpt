@@ -1,19 +1,18 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import Settings from "./Settings";
 
-const Overview = () => {
+
+const Dashboard = () => {
 
     return(
         <div className="overview">
             <div className="overview_sidebar">
                 <Sidebar />
             </div>
-            <div className="settings">
-                <Settings />
-            </div>
+            <Outlet />
         </div>
     )
 }
 
-export default Overview;
+export default Dashboard;
