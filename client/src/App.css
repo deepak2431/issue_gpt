@@ -109,6 +109,15 @@ input:focus {
 }
 
 
+/* Profile component CSS */
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 60%;
+  gap: 10px;
+}
+
 
 
 
