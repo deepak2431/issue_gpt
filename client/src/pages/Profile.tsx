@@ -1,8 +1,12 @@
 import React, { useState, ChangeEvent } from "react";
+import { useDispatch } from "react-redux";
 import InputForm from "../components/InputForm";
 import Button from "../components/Button";
+import { addOrg, addAccessToken, addWebhooksSecret } from "../redux/ProfileReducer";
 
 const Profile  = () => {
+
+    const dispatch = useDispatch();
 
     const [orgName, setOrgName] = useState('');
     const [accessToken, setAccessToken] = useState('');
@@ -11,18 +15,20 @@ const Profile  = () => {
     const handleOrgChange = (e:ChangeEvent<HTMLInputElement>) => {
        setOrgName(e.target.value)
     }
-
     const handleTokenChange = (e:ChangeEvent<HTMLInputElement>) => {
         setAccessToken(e.target.value)
 
     }
-
     const handleSecretChange = (e:ChangeEvent<HTMLInputElement>) => {
         setWebhooksSecret(e.target.value)
 
     }
-
     const handleSubmit = () => {
+
+        dispatch(addOrg(orgName))
+        dispatch(addAccessToken(accessToken))
+        dispatch(addWebhooksSecret(webhooksSecret))
+
         console.log(
             {
                 orgName: orgName,

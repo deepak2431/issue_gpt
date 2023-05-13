@@ -118,6 +118,26 @@ input:focus {
   gap: 10px;
 }
 
+/*Overview section CSS */
 
+.overview_section_1, .overview_section_2, .overview_metrics{
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  height: 200px;
+  width: 400px;
+}
+.overview_metrics {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  width: 96%;
+  height: 100px;
 
+}
 
+.overview_metrics_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+  margin: 20px;
+}

@@ -15,7 +15,7 @@ const sidebarNav : Navbar[] = [
         name: 'Dashboard',
         key: 1,
         icon: <MdDashboardCustomize className='sidebar_icon' />,
-        linkRoutes: ""
+        linkRoutes: "overview"
     },
     {
         name: 'Issues',
