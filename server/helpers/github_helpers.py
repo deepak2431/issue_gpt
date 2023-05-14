@@ -59,7 +59,13 @@ class GithubAPI:
 
         issues = []
         for issue in repo.get_issues(state="open"):
-            issues.append({"issue_title": issue.title, "issue_description": issue.body, "issue_number": issue.number})
+            issues.append(
+                {
+                    "issue_title": issue.title,
+                    "issue_description": issue.body,
+                    "issue_number": issue.number,
+                }
+            )
 
         df = pd.DataFrame(issues)
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")

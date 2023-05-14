@@ -6,7 +6,7 @@ import hmac
 import hashlib
 import base64
 from dotenv import load_dotenv
-from log_mod import logger
+from helpers.log_mod import logger
 from helpers.github_helpers import GithubAPI
 from helpers.open_ai_helpers import SearchIssue
 
@@ -55,10 +55,9 @@ def parse_webhooks(data):
     }
 
 
-
 def check_similar_issue(owner, repo, issue_title, issue_body):
     """Check if a similar issue already exists."""
-    
+
     logger.info(f"Checking for similar issues in {owner}/{repo}...")
     github_api = GithubAPI(repo_name=repo, owner=owner)
     df = github_api.get_issues()
@@ -81,7 +80,7 @@ def check_similar_issue(owner, repo, issue_title, issue_body):
         return True
     else:
         logger.info("No similar issues found.")
-        return False  
+        return False
 
 
 def post_comments(issue_number, owner, repo):

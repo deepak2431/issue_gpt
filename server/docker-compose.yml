@@ -1,0 +1,28 @@
+version: '2.3'
+services:
+  issue_checker_service:
+    image: issue_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SERVER=${SERVER}
+        - USER_NAME=${USER_NAME}
+        - PASSWORD=${PASSWORD}
+        - DATABASE=${DATABASE}
+        - CONNECTION_URL=${CONNECTION_URL}
+    environment:
+      - SERVER=${SERVER}
+      - USER_NAME=${USER_NAME}
+      - PASSWORD=${PASSWORD}
+      - DATABASE=${DATABASE}
+      - CONNECTION_URL=${CONNECTION_URL}
+    ports: 
+      - 6379:8000
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+    command: redis-server --appendonly yes
+    restart: always

@@ -4,7 +4,6 @@ import json
 from dotenv import load_dotenv
 
 import openai
-from pprint import pprint
 
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
@@ -96,7 +95,6 @@ class SearchIssue:
             .head(n)
             .combined.str.replace("Issue title: ", "")
             .str.replace("; Issue description:", ": ")
-
         )
 
         similar_issues = []
