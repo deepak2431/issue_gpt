@@ -22,3 +22,11 @@ class DuplicateIssues(db.Model):
         self.created_issue_id = created_issue_id
         self.duplicate_issue_id = duplicate_issue_id
         self.received_dt_utc = received_dt_utc
+
+    def save_info(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise

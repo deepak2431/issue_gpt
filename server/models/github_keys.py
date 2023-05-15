@@ -17,3 +17,11 @@ class GithubKeys(db.Model):
         self.organisation_name = organisation_name
         self.personal_access_token = personal_access_token
         self.webhooks_secret = webhooks_secret
+
+    def save_info(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise

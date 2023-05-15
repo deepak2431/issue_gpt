@@ -1,10 +1,8 @@
 # Add all the resources for the github app
 import json
 import os
-import asyncio
 import hmac
 import hashlib
-import base64
 from dotenv import load_dotenv
 from helpers.log_mod import logger
 from helpers.github_helpers import GithubAPI

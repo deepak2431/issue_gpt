@@ -32,4 +32,4 @@ if __name__ == "__main__":
     logger.info("Starting the server")
 
     app = create_app()
-    app.run(debug=True, port=8001, host="0.0.0.0")
+    app.run(debug=True, port=8000, host="0.0.0.0")

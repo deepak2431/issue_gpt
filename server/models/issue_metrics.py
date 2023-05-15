@@ -19,3 +19,11 @@ class IssueMetrics(db.Model):
         self.open_issues = open_issues
         self.total_issues = total_issues
         self.duplicate_issues = duplicate_issues
+
+    def save_info(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise

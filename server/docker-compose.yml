@@ -18,11 +18,14 @@ services:
       - DATABASE=${DATABASE}
       - CONNECTION_URL=${CONNECTION_URL}
     ports: 
-      - 6379:8000
+      - 8000:8000
     depends_on:
       - redis
 
   redis:
     image: "redis:alpine"
+    container_name: "redis_issue_app"
     command: redis-server --appendonly yes
     restart: always
+    ports:
+       - '6379:6379'
