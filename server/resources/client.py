@@ -25,7 +25,7 @@ class GitKeys(Resource):
             new_github_keys.save_info()
             logger.info("GithubKeys info saved successfully")
 
-            return {"message": "Keys saved successfully"}, 200
+            return {"message": "Keys saved successfully"}, 201
         except Exception as e:
             logger.error("Failed to save GithubKeys info")
             return {"message": "Failed to save the keys"}, 400
@@ -42,7 +42,7 @@ class GitKeys(Resource):
                 "organisation_name": github_keys.organisation_name,
                 "personal_access_token": github_keys.personal_access_token,
                 "webhooks_secret": github_keys.webhooks_secret,
-            }
+            }, 200
         else:
             logger.warning("No keys found for the given organisation name")
             return {"message": "No keys found for the given organisation name"}, 404
@@ -66,7 +66,7 @@ class Repository(Resource):
             repository_info.save_info()
             logger.info("Repository info saved successfully")
 
-            return {"message": "Repository added successfully"}, 200
+            return {"message": "Repository added successfully"}, 201
         except Exception as e:
             logger.error("Failed to save repository info")
             return {"message": "Failed to save the repository"}, 400
