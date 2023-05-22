@@ -27,7 +27,7 @@ class GitKeys(Resource):
 
             return {"message": "Keys saved successfully"}, 201
         except Exception as e:
-            logger.error("Failed to save GithubKeys info")
+            logger.error("Failed to save GithubKeys info", exc_info=1)
             return {"message": "Failed to save the keys"}, 400
 
     def get(self):

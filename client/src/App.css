@@ -1,5 +1,6 @@
 :root {
-  --box-shadow-color:  0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  --box-shadow-color: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 
 .overview {
@@ -12,7 +13,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: #071021 ;
+  background: #071021;
 }
 .sidebar p {
   color: white;
@@ -42,12 +43,12 @@
   padding: 10px;
   width: 100%;
   text-align: left;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
 }
-.btn-nav:hover, .btn-nav:active {
+.btn-nav:hover,
+.btn-nav:active {
   background-color: #1c283d;
-
 }
 
 .sidebar_icon {
@@ -57,11 +58,12 @@
 /* Button Component CSS */
 .btn-component {
   border: none;
-  background-color:#3A42CD ;
+  background-color: #3a42cd;
   color: #ffffff;
   border-radius: 10px;
   padding: 10px;
   font-size: large;
+  margin: 5px;
 }
 
 /* Input Component CSS */
@@ -70,6 +72,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin: 5px;
 }
 
 .input_label {
@@ -112,9 +115,8 @@ input:focus {
   justify-content: space-around;
 }
 
-
 /* Profile component CSS */
-.profile {
+.settings {
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -131,7 +133,8 @@ input:focus {
   margin-top: 20px;
 }
 
-.overview_section_1, .overview_section_2{
+.overview_section_1,
+.overview_section_2 {
   box-shadow: var(--box-shadow-color);
   height: 200px;
   width: 400px;
@@ -151,9 +154,9 @@ input:focus {
   width: inherit;
 }
 .metrics_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .overview_metrics_info {
   display: flex;
@@ -161,4 +164,15 @@ input:focus {
   justify-content: space-around;
   gap: 10px;
   margin: 20px;
+}
+
+/* issues section CSS */
+.add_repo {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin: 20px;
+}
+.add_repo_btn {
+  margin-top: 20px;
 }
