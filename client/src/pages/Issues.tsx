@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TableCard from "../components/TableCard";
 import InputForm from "../components/InputForm";
@@ -12,10 +12,10 @@ const tableHeadings = [
     headingTitle: "Repository Name",
   },
   {
-    headingTitle: "Open issues",
+    headingTitle: "Open issue ID",
   },
   {
-    headingTitle: "Active contributors",
+    headingTitle: "Duplicate issue ID",
   },
 ];
 
@@ -23,10 +23,34 @@ const SERVER_URL =
   "https://f6b1-2401-4900-3ccc-48d9-d822-62f2-f4cb-d409.ngrok-free.app";
 
 const Issues = () => {
+
   const [repo, setRepo] = useState("");
   const [error, setError] = useState(0);
   const [addRepo, setAddRepo] = useState(0);
   const [success, setSuccess] = useState(0);
+  const [issueData, setIssueData] = useState([]);
+
+  const getIssueData = async () => {
+
+    try {
+      const resp = await fetch(SERVER_URL + "/duplicate_issues?org_name=deepak");
+      if(resp.status === 200) {
+        const data = await resp.json();
+        console.log(data)
+        setIssueData(data)
+      }
+      else {
+        throw Error("Unable to fetch the data")
+      }
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(( ) => {
+    getIssueData()
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepo(e.target.value);
