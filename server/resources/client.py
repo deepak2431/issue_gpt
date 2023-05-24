@@ -3,6 +3,7 @@ from helpers.log_mod import logger
 
 from models.github_keys import GithubKeys
 from models.repository_info import RepositoryInfo
+from models.duplicate_issues import DuplicateIssues
 
 
 class GitKeys(Resource):
@@ -70,3 +71,20 @@ class Repository(Resource):
         except Exception as e:
             logger.error("Failed to save repository info")
             return {"message": "Failed to save the repository"}, 400
+
+class Issues(Resource):
+
+    def get(self):
+        logger.info("Received request to get all duplicate issues")
+
+        org_name = request.args.get("org_name")
+
+        logger.info(f"Getting duplicate issues for {org_name}")
+        duplicate_issues = DuplicateIssues.get_duplicate_issues(organisation_name=org_name)
+
+        if duplicate_issues:
+            logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
+            return {"duplicate_issues": duplicate_issues}, 200
+        else:
+            logger.warning(f"No duplicate issues found for {org_name}")
+            return {"message": f"No duplicate issues found for {org_name}"}, 404

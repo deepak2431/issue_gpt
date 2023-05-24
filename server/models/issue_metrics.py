@@ -9,6 +9,7 @@ class IssueMetrics(db.Model):
     __tablename__ = "issue_metrics"
 
     pk_issue_metrics = db.Column(db.Integer, primary_key=True)
+    organisation_name = db.Column(db.String)  #TODO: Associate using foreign key
     repository_name = db.Column(db.String)
     open_issues = db.Column(db.Integer)
     total_issues = db.Column(db.Integer)

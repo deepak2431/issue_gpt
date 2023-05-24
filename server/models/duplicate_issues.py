@@ -9,6 +9,7 @@ class DuplicateIssues(db.Model):
     __tablename__ = "duplicate_issues"
 
     pk_duplicate_issues = db.Column(db.Integer, primary_key=True)
+    organisation_name = db.Column(db.String) #TODO: Associate using foreign key
     repository_name = db.Column(db.String)
     created_issue_id = db.Column(db.String)
     duplicate_issue_id = db.Column(db.String)
@@ -27,6 +28,26 @@ class DuplicateIssues(db.Model):
         try:
             db.session.add(self)
             db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise
+
+    def get_duplicate_issues(organisation_name): 
+        """
+        Get all duplicate issues for the given organisation name.
+        """
+        try:
+            duplicate_issues = DuplicateIssues.query.filter_by(organisation_name=organisation_name).all()
+            return [
+            {
+            "organisation_name": issue.organisation_name,
+            "repository_name": issue.repository_name,
+            "created_issue_id": issue.created_issue_id,
+            "duplicate_issue_id": issue.duplicate_issue_id,
+            "received_dt_utc": issue.received_dt_utc
+            } 
+            for issue in duplicate_issues
+            ]
         except Exception as e:
             db.session.rollback()
             raise
