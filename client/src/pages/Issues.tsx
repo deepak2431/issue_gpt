@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import TableCard from "../components/TableCard";
 import InputForm from "../components/InputForm";
@@ -20,10 +21,9 @@ const tableHeadings = [
 ];
 
 const SERVER_URL =
-  "https://f6b1-2401-4900-3ccc-48d9-d822-62f2-f4cb-d409.ngrok-free.app";
+  "https://8f4c-2401-4900-3cdc-583c-d81a-b569-b6e5-5a01.ngrok-free.app";
 
 const Issues = () => {
-
   const [repo, setRepo] = useState("");
   const [error, setError] = useState(0);
   const [addRepo, setAddRepo] = useState(0);
@@ -31,26 +31,24 @@ const Issues = () => {
   const [issueData, setIssueData] = useState([]);
 
   const getIssueData = async () => {
-
     try {
-      const resp = await fetch(SERVER_URL + "/duplicate_issues?org_name=deepak");
-      if(resp.status === 200) {
+      const resp = await fetch(
+        SERVER_URL + "/duplicate_issues?org_name=deepak"
+      );
+      if (resp.status === 200) {
         const data = await resp.json();
-        console.log(data)
-        setIssueData(data)
+        setIssueData(data.duplicate_issues);
+      } else {
+        throw Error("Unable to fetch the data");
       }
-      else {
-        throw Error("Unable to fetch the data")
-      }
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
-  useEffect(( ) => {
-    getIssueData()
-  }, [])
+  useEffect(() => {
+    getIssueData();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepo(e.target.value);
@@ -60,6 +58,7 @@ const Issues = () => {
     setAddRepo(1);
     setError(0);
     setRepo("");
+    setSuccess(0);
   };
 
   const handleAddRepo = () => {
@@ -117,7 +116,7 @@ const Issues = () => {
           </p>
         )}
       </div>
-      {(addRepo === 0 || success) && (
+      {addRepo === 0 && (
         <>
           <div className="add_org_button">
             <Button text="Add Repository" onPress={handleAddNew} />
@@ -129,12 +128,22 @@ const Issues = () => {
           <h4>{headingTitle}</h4>
         ))}
       </div>
-      <TableCard
-        orgName="Deepak"
-        repoName="Django"
-        openIssue="500"
-        contributors="10"
-      />
+      {issueData.map(
+        ({
+          organisation_name,
+          repository_name,
+          created_issue_id,
+          duplicate_issue_id,
+        }) => (
+          <TableCard
+            key={uuidv4()}
+            orgName={organisation_name}
+            repoName={repository_name}
+            openIssue={created_issue_id}
+            contributors={duplicate_issue_id}
+          />
+        )
+      )}
     </div>
   );
 };

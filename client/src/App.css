@@ -100,6 +100,10 @@ input:focus {
   gap: 5px;
   justify-content: space-around;
 }
+.table_content p {
+  width: 6rem;
+  text-align: center;
+}
 
 /* Settings page Component CSS */
 .add_org_button {
@@ -115,12 +119,17 @@ input:focus {
   justify-content: space-around;
 }
 
-/* Profile component CSS */
+/* Settings component CSS */
 .settings {
   display: flex;
   flex-direction: column;
   margin: 20px;
   width: 60%;
+  gap: 10px;
+}
+.saved_settings {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 

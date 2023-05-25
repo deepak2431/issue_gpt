@@ -1,15 +1,17 @@
 import React, { useState, ChangeEvent } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import InputForm from "../components/InputForm";
 import Button from "../components/Button";
 import {
   addOrg,
   addAccessToken,
   addWebhooksSecret,
+  settingsSuccess,
 } from "../redux/SettingsReducer";
+import { RootState } from "../redux";
 
 const SERVER_URL =
-  "https://f6b1-2401-4900-3ccc-48d9-d822-62f2-f4cb-d409.ngrok-free.app";
+  "https://8f4c-2401-4900-3cdc-583c-d81a-b569-b6e5-5a01.ngrok-free.app";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,19 @@ const Settings = () => {
   const [accessToken, setAccessToken] = useState("");
   const [webhooksSecret, setWebhooksSecret] = useState("");
   const [error, setError] = useState(0);
-  const [success, setSuccess] = useState(0);
+
+  const organisation_name = useSelector(
+    (state: RootState) => state.settings.orgName
+  );
+  const access_token = useSelector(
+    (state: RootState) => state.settings.accessToken
+  );
+  const webhooks_secret = useSelector(
+    (state: RootState) => state.settings.webhooksSecret
+  );
+  const settings_saved = useSelector(
+    (state: RootState) => state.settings.settingsSaved
+  );
 
   const handleOrgChange = (e: ChangeEvent<HTMLInputElement>) => {
     setOrgName(e.target.value);
@@ -31,10 +45,6 @@ const Settings = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(addOrg(orgName));
-    dispatch(addAccessToken(accessToken));
-    dispatch(addWebhooksSecret(webhooksSecret));
-
     const requestData = {
       organisation_name: orgName,
       personal_access_token: accessToken,
@@ -53,13 +63,16 @@ const Settings = () => {
       .then((response) => {
         if (response.status !== 201) {
           setError(1);
-          setSuccess(0);
+          dispatch(settingsSuccess(false));
         }
         return response.json();
       })
       .then((resp) => {
         console.log(resp);
-        setSuccess(1);
+        dispatch(settingsSuccess(true));
+        dispatch(addOrg(orgName));
+        dispatch(addAccessToken(accessToken));
+        dispatch(addWebhooksSecret(webhooksSecret));
       });
   };
 
@@ -70,7 +83,19 @@ const Settings = () => {
           Error while saving the settings, Please try again!
         </p>
       )}
-      {success === 0 ? (
+      {settings_saved  ? (
+        <>
+          <h3>Your saved settings</h3>
+          <div className="saved_settings">
+            <h5>Organisation name</h5>
+            <p>{organisation_name}</p>
+            <h5>Access Token</h5>
+            <p>{access_token}</p>
+            <h5>Webhooks secret</h5>
+            <p>{webhooks_secret}</p>
+          </div>
+        </>
+      ) : (
         <>
           <InputForm
             type="text"
@@ -95,8 +120,6 @@ const Settings = () => {
           />
           <Button text="Submit details" onPress={handleSubmit} />
         </>
-      ) : (
-        <h2>Settings saved successfully</h2>
       )}
     </div>
   );
