@@ -132,6 +132,12 @@ input:focus {
   flex-direction: column;
   gap: 10px;
 }
+.settings_saved_info {
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
 
 /*Overview section CSS */
 

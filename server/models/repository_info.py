@@ -11,10 +11,12 @@ class RepositoryInfo(db.Model):
     pk_repository = db.Column(db.Integer, primary_key=True)
     repository_name = db.Column(db.String)
     organisation_name = db.Column(db.String)
+    issues_indexed = db.Column(db.Boolean)
 
-    def __init__(self, repository_name, organisation_name):
+    def __init__(self, repository_name, organisation_name, issues_indexed):
         self.repository_name = repository_name
         self.organisation_name = organisation_name
+        self.issues_indexed = issues_indexed
 
     def save_info(self):
         try:

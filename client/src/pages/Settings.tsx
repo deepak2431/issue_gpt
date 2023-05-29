@@ -88,11 +88,11 @@ const Settings = () => {
           <h3>Your saved settings</h3>
           <div className="saved_settings">
             <h5>Organisation name</h5>
-            <p>{organisation_name}</p>
+            <p className="settings_saved_info">{organisation_name}</p>
             <h5>Access Token</h5>
-            <p>{access_token}</p>
+            <p  className="settings_saved_info">{access_token}</p>
             <h5>Webhooks secret</h5>
-            <p>{webhooks_secret}</p>
+            <p  className="settings_saved_info">{webhooks_secret}</p>
           </div>
         </>
       ) : (
