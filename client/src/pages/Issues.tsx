@@ -24,11 +24,13 @@ const SERVER_URL =
   "https://51c3-2401-4900-710c-4850-b436-8e39-799b-25f6.ngrok-free.app";
 
 const Issues = () => {
-  const [repo, setRepo] = useState("");
-  const [error, setError] = useState(0);
-  const [addRepo, setAddRepo] = useState(0);
-  const [success, setSuccess] = useState(0);
+  const [repo, setRepo] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
+  const [addRepo, setAddRepo] = useState<boolean>(false);
   const [issueData, setIssueData] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [issueDataError, setIssueDataError] = useState<boolean>(false);
+
 
   const getIssueData = async () => {
     try {
@@ -38,10 +40,12 @@ const Issues = () => {
       if (resp.status === 200) {
         const data = await resp.json();
         setIssueData(data.duplicate_issues);
+        setLoading(false)
       } else {
         throw Error("Unable to fetch the data");
       }
     } catch (error) {
+      setIssueDataError(true)
       console.log(error);
     }
   };
@@ -55,14 +59,13 @@ const Issues = () => {
   };
 
   const handleAddNew = () => {
-    setAddRepo(1);
-    setError(0);
+    setAddRepo(true);
+    setError(false);
     setRepo("");
-    setSuccess(0);
   };
 
   const handleAddRepo = () => {
-    setError(0);
+    setError(false);
     const requestData = {
       org_name: "deepak2431",
       repository: repo,
@@ -85,18 +88,17 @@ const Issues = () => {
       })
       .then((res) => {
         console.log("Added successfully");
-        setSuccess(1);
-        setAddRepo(0);
+        setAddRepo(false);
       })
       .catch((res) => {
-        setError(1);
+        setError(true);
         setRepo("");
       });
   };
   return (
     <div className="issues">
       <div className="add_repo">
-        {addRepo === 1 && (
+        {addRepo && (
           <>
             <InputForm
               type="text"
@@ -110,13 +112,13 @@ const Issues = () => {
             </div>
           </>
         )}
-        {error === 1 && (
+        {error && (
           <p style={{ color: "red" }}>
             Error while saving the repo, Please try again!
           </p>
         )}
       </div>
-      {addRepo === 0 && (
+      {!addRepo && (
         <>
           <div className="add_org_button">
             <Button text="Add Repository" onPress={handleAddNew} />
@@ -128,7 +130,16 @@ const Issues = () => {
           <h4>{headingTitle}</h4>
         ))}
       </div>
-      {issueData.map(
+      {loading && (
+        <p style={{textAlign: 'center', marginTop: '10rem'}}>Loading the data!!!</p>
+      )}
+      {!loading && !issueData.length && (
+        <p style={{textAlign: 'center', marginTop: '10rem'}}>No data found.</p>
+      )}
+      {!loading && !issueData && issueDataError &&  (
+        <p style={{textAlign: 'center', marginTop: '10rem'}}>Error while fetching the data.</p>
+      )}
+      {issueData.length && issueData.map(
         ({
           organisation_name,
           repository_name,

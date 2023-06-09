@@ -86,14 +86,8 @@ class Issues(Resource):
             organisation_name=org_name
         )
 
-        if duplicate_issues:
-            logger.info(
-                f"{len(duplicate_issues)} duplicate issues found for {org_name}"
-            )
-            return {"duplicate_issues": duplicate_issues}, 200
-        else:
-            logger.warning(f"No duplicate issues found for {org_name}")
-            return {"message": f"No duplicate issues found for {org_name}"}, 404
+        logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
+        return {"duplicate_issues": duplicate_issues}, 200
 
 
 class Metrics(Resource):
