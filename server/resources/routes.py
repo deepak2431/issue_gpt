@@ -1,6 +1,6 @@
 # init all the routes
 from .webhooks import Home, Webhooks
-from .client import GitKeys, Repository, Issues
+from .client import GitKeys, Repository, Issues, IssueMetrics
 
 
 def initialize_routes(api):
@@ -9,3 +9,4 @@ def initialize_routes(api):
     api.add_resource(GitKeys, "/github_keys")
     api.add_resource(Repository, "/repository")
     api.add_resource(Issues, "/duplicate_issues")
+    api.add_resource(IssueMetrics, "/metrics")

@@ -71,6 +71,19 @@ class GithubAPI:
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")
         return df
 
+    def get_issue_number(self, issue_title):
+        df_issue = self.get_issues()
+
+        result = df_issue[df_issue["issue_title"] == issue_title]
+
+        if len(result) > 0:
+            issue_number = result.iloc[0]["issue_number"]
+            logging.info(f"Issue #{issue_number} found with title {issue_title}")
+            return issue_number
+        else:
+            logging.info(f"No issue found with title {issue_title}")
+            return -1
+
     def add_comments(self, issue_number):
         """Add a comment to an issue."""
 

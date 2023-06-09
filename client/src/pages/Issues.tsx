@@ -21,7 +21,7 @@ const tableHeadings = [
 ];
 
 const SERVER_URL =
-  "https://8f4c-2401-4900-3cdc-583c-d81a-b569-b6e5-5a01.ngrok-free.app";
+  "https://51c3-2401-4900-710c-4850-b436-8e39-799b-25f6.ngrok-free.app";
 
 const Issues = () => {
   const [repo, setRepo] = useState("");

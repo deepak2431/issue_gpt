@@ -1,9 +1,11 @@
 from flask_restful import Resource, request
+from flask import jsonify, make_response
 from helpers.log_mod import logger
 
 from models.github_keys import GithubKeys
 from models.repository_info import RepositoryInfo
 from models.duplicate_issues import DuplicateIssues
+from models.issue_metrics import IssueMetrics
 
 
 class GitKeys(Resource):
@@ -72,19 +74,37 @@ class Repository(Resource):
             logger.error("Failed to save repository info")
             return {"message": "Failed to save the repository"}, 400
 
-class Issues(Resource):
 
+class Issues(Resource):
     def get(self):
         logger.info("Received request to get all duplicate issues")
 
         org_name = request.args.get("org_name")
 
         logger.info(f"Getting duplicate issues for {org_name}")
-        duplicate_issues = DuplicateIssues.get_duplicate_issues(organisation_name=org_name)
+        duplicate_issues = DuplicateIssues.get_duplicate_issues(
+            organisation_name=org_name
+        )
 
         if duplicate_issues:
-            logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
+            logger.info(
+                f"{len(duplicate_issues)} duplicate issues found for {org_name}"
+            )
             return {"duplicate_issues": duplicate_issues}, 200
         else:
             logger.warning(f"No duplicate issues found for {org_name}")
             return {"message": f"No duplicate issues found for {org_name}"}, 404
+
+
+class Metrics(Resource):
+    def get(self):
+        logger.info("Received request for issue metrics")
+
+        org_name = request.args.get("org_name")
+
+        logger.info(f"Getting metrics for {org_name}")
+
+        metrics = IssueMetrics.get_metrics(organisation_name=org_name)
+
+        logger.info(f"{len(metrics)} metrics retrieved for {org_name}")
+        return make_response(jsonify({"metrics": metrics}), 200)
