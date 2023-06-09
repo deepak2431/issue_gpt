@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux";
+import { CONFIG } from "../config";
+
+const metricsTitle = [
+  "Repository",
+  "Total issues",
+  "Open issues",
+  "Duplicate issues",
+];
+const SERVER_URL = CONFIG.SERVER_URL;
 
 const Overview = () => {
-  const metricsTitle = [
-    "Repository",
-    "Total issues",
-    "Open issues",
-    "Duplicate issues",
-  ];
+  const [metricsData, setMetricsData] = useState([]);
+
+  const getMetricsData = () => {
+    const metricsUrl = `${SERVER_URL}/metrics?org_name=deepak2431`;
+
+    fetch(metricsUrl)
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error("Error while fetching the data");
+        }
+        return res.json();
+      })
+      .then((res) => setMetricsData(res.metrics))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getMetricsData();
+  }, []);
+
   const metricsNumber = [12, 89, 839, 10];
 
   const orgName = useSelector((state: RootState) => state.settings.orgName);

@@ -9,9 +9,9 @@ import {
   settingsSuccess,
 } from "../redux/SettingsReducer";
 import { RootState } from "../redux";
+import { CONFIG } from "../config";
 
-const SERVER_URL =
-  "https://51c3-2401-4900-710c-4850-b436-8e39-799b-25f6.ngrok-free.app";
+const SERVER_URL = CONFIG.SERVER_URL;
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -83,16 +83,16 @@ const Settings = () => {
           Error while saving the settings, Please try again!
         </p>
       )}
-      {settings_saved  ? (
+      {settings_saved ? (
         <>
           <h3>Your saved settings</h3>
           <div className="saved_settings">
             <h5>Organisation name</h5>
             <p className="settings_saved_info">{organisation_name}</p>
             <h5>Access Token</h5>
-            <p  className="settings_saved_info">{access_token}</p>
+            <p className="settings_saved_info">{access_token}</p>
             <h5>Webhooks secret</h5>
-            <p  className="settings_saved_info">{webhooks_secret}</p>
+            <p className="settings_saved_info">{webhooks_secret}</p>
           </div>
         </>
       ) : (

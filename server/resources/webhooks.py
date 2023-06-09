@@ -3,7 +3,7 @@ import threading
 from flask import Flask, jsonify, request, abort
 from flask_restful import Resource
 
-from resources.github_app import verify_webhook_signature
+from resources.helpers import verify_webhook_signature
 from redis_broker.redis_service import init_redis_client
 from helpers.log_mod import logger
 

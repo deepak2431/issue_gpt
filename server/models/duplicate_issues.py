@@ -14,15 +14,21 @@ class DuplicateIssues(db.Model):
     repository_name = db.Column(db.String)
     created_issue_id = db.Column(db.String)
     duplicate_issue_id = db.Column(db.String)
-
+    comment_added = db.Column(db.Boolean)
     received_dt_utc = db.Column(db.DateTime)
 
     def __init__(
-        self, repository_name, created_issue_id, duplicate_issue_id, received_dt_utc
+        self,
+        repository_name,
+        created_issue_id,
+        duplicate_issue_id,
+        comment_added,
+        received_dt_utc,
     ):
         self.repository_name = repository_name
         self.created_issue_id = created_issue_id
         self.duplicate_issue_id = duplicate_issue_id
+        self.comment_added = comment_added
         self.received_dt_utc = received_dt_utc
 
     def save_info(self):

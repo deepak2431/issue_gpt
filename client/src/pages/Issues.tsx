@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import TableCard from "../components/TableCard";
 import InputForm from "../components/InputForm";
 import Button from "../components/Button";
+import { CONFIG } from "../config";
 
 const tableHeadings = [
   {
@@ -20,8 +21,7 @@ const tableHeadings = [
   },
 ];
 
-const SERVER_URL =
-  "https://51c3-2401-4900-710c-4850-b436-8e39-799b-25f6.ngrok-free.app";
+const SERVER_URL = CONFIG.SERVER_URL;
 
 const Issues = () => {
   const [repo, setRepo] = useState<string>("");
@@ -31,7 +31,6 @@ const Issues = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [issueDataError, setIssueDataError] = useState<boolean>(false);
 
-
   const getIssueData = async () => {
     try {
       const resp = await fetch(
@@ -40,12 +39,12 @@ const Issues = () => {
       if (resp.status === 200) {
         const data = await resp.json();
         setIssueData(data.duplicate_issues);
-        setLoading(false)
+        setLoading(false);
       } else {
         throw Error("Unable to fetch the data");
       }
     } catch (error) {
-      setIssueDataError(true)
+      setIssueDataError(true);
       console.log(error);
     }
   };
@@ -130,31 +129,30 @@ const Issues = () => {
           <h4>{headingTitle}</h4>
         ))}
       </div>
-      {loading && (
-        <p style={{textAlign: 'center', marginTop: '10rem'}}>Loading the data!!!</p>
-      )}
+      {loading && <p className="loading_message">Loading the data!!!</p>}
       {!loading && !issueData.length && (
-        <p style={{textAlign: 'center', marginTop: '10rem'}}>No data found.</p>
+        <p className="loading_message">No data found.</p>
       )}
-      {!loading && !issueData && issueDataError &&  (
-        <p style={{textAlign: 'center', marginTop: '10rem'}}>Error while fetching the data.</p>
+      {!loading && !issueData && issueDataError && (
+        <p className="loading_message">Error while fetching the data.</p>
       )}
-      {issueData.length && issueData.map(
-        ({
-          organisation_name,
-          repository_name,
-          created_issue_id,
-          duplicate_issue_id,
-        }) => (
-          <TableCard
-            key={uuidv4()}
-            orgName={organisation_name}
-            repoName={repository_name}
-            openIssue={created_issue_id}
-            contributors={duplicate_issue_id}
-          />
-        )
-      )}
+      {issueData.length &&
+        issueData.map(
+          ({
+            organisation_name,
+            repository_name,
+            created_issue_id,
+            duplicate_issue_id,
+          }) => (
+            <TableCard
+              key={uuidv4()}
+              orgName={organisation_name}
+              repoName={repository_name}
+              openIssue={created_issue_id}
+              contributors={duplicate_issue_id}
+            />
+          )
+        )}
     </div>
   );
 };

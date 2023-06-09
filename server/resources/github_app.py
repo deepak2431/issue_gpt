@@ -1,163 +1,91 @@
-# Add all the resources for the github app
-import json
-import os
-import hmac
-import hashlib
 from dotenv import load_dotenv
+from datetime import datetime
+
 from helpers.log_mod import logger
 from helpers.github_helpers import GithubAPI
 from helpers.open_ai_helpers import SearchIssue
+from models.duplicate_issues import DuplicateIssues
 
 
 load_dotenv()
 
 
-def verify_webhook_signature(data, signature):
-    """Verify GitHub webhook signature."""
+class GithubApp:
+    __issue_df = None
 
-    logger.info("Verifying webhook signature...")
+    def __init__(self, owner, repo, issue_title, issue_body) -> None:
+        self.owner = owner
+        self.repo = repo
+        self.issue_title = issue_title
+        self.issue_body = issue_body
 
-    secret = os.getenv("WEBHOOK_SECRET_KEY")
-    logger.info(f"Using secret key: {secret}")
+    def check_similar_issue(self):
+        """Check if a similar issue already exists."""
 
-    digest = hmac.new(secret.encode("utf-8"), data, hashlib.sha256).hexdigest()
-    logger.info(f"Calculated digest: {digest}")
+        logger.info(f"Checking for similar issues in {self.owner}/{self.repo}...")
+        github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
+        df = github_api.get_issues()
 
-    result = hmac.compare_digest("sha256=" + digest, signature)
-    logger.info(f"Signature verification result: {result}")
+        self.__issue_df = df
 
-    return result
+        issue_searcher = SearchIssue(df)
+        issue_searcher.generate_embeddings()
 
-
-def parse_webhooks(data):
-    """Parse JSON webhook payload and return issue details."""
-
-    logger.info("Parsing webhook payload...")
-
-    # extracts the owner, repo name, issue number, title and body from the JSON data
-    action = data["action"]
-    owner = data["repository"]["owner"]["login"]
-    repo = data["repository"]["name"]
-    issue_number = data["issue"]["number"]
-    issue_title = data["issue"]["title"]
-    issue_body = data["issue"]["body"]
-
-    # returns the extracted details
-    return {
-        "owner": owner,
-        "action": action,
-        "repo": repo,
-        "issue_number": issue_number,
-        "title": issue_title,
-        "body": issue_body,
-    }
-
-
-def check_similar_issue(owner, repo, issue_title, issue_body):
-    """Check if a similar issue already exists."""
-
-    logger.info(f"Checking for similar issues in {owner}/{repo}...")
-    github_api = GithubAPI(repo_name=repo, owner=owner)
-    df = github_api.get_issues()
-
-    issue_searcher = SearchIssue(df)
-    issue_searcher.generate_embeddings()
-
-    # generate the issue with the combined body, title for embeddings
-    issue_combined = (
-        "Issue description: "
-        + issue_body.strip()
-        + "; Issue Title: "
-        + issue_title.strip()
-    )
-
-    similar_issues = issue_searcher.find_similar_issues(new_issue=issue_combined, n=3)
-
-    if len(similar_issues) > 0:
-        logger.info(f"{len(similar_issues)} similar issues found.")
-        return True
-    else:
-        logger.info("No similar issues found.")
-        return False
-
-
-def post_comments(issue_number, owner, repo):
-    """Add a comment to a GitHub issue.
-
-    Args:
-        issue_number (int): The issue number.
-        owner (str): The repository owner.
-        repo (str): The repository name.
-    Returns:
-        int: 1 if successful, 0 otherwise.
-    """
-    logger.info(f"Adding comment to issue #{issue_number}...")
-    github_api = GithubAPI(repo_name=repo, owner=owner)
-
-    status = github_api.add_comments(issue_number=issue_number)
-
-    if status == 1:
-        logger.info(f"Comment added to issue #{issue_number}.")
-    else:
-        logger.warning(f"Failed to add comment to issue #{issue_number}.")
-
-    return status
-
-
-def process_webhooks(webhooks_data):
-    """
-    Process GitHub webhooks and add comments to issues.
-
-    Parameters:
-    webhooks_data (dict): The JSON payload from the GitHub webhook.
-
-    Functionality:
-    - Logs that GitHub webhooks are being processed.
-    - Parses the webhook payload using the parse_webhooks() function.
-    - Adds a comment to the issue using the post_comments() function.
-    - Logs whether the comment was added successfully or failed.
-
-    Returns:
-    None
-    """
-
-    logger.info("Processing GitHub webhooks...")
-
-    # Parse the webhook payload
-    parsed_data = parse_webhooks(data=webhooks_data)
-
-    webhook_action = parsed_data["action"]
-
-    logger.info(f"Processing GitHub webhooks with action {webhook_action}")
-
-    if parsed_data["action"] == "opened":
-        # Add a comment to the issue
-
-        # check if there's an similar issue
-        similar_issue_found = check_similar_issue(
-            owner=parsed_data["owner"],
-            repo=parsed_data["repo"],
-            issue_title=parsed_data["title"],
-            issue_body=parsed_data["body"],
+        # generate the issue with the combined body, title for embeddings
+        issue_combined = (
+            "Issue description: "
+            + self.issue_body.strip()
+            + "; Issue Title: "
+            + self.issue_title.strip()
         )
 
-        if similar_issue_found:
-            status = post_comments(
-                issue_number=parsed_data["issue_number"],
-                owner=parsed_data["owner"],
-                repo=parsed_data["repo"],
+        similar_issues = issue_searcher.find_similar_issues(
+            new_issue=issue_combined, n=3
+        )
+
+        if len(similar_issues) > 0:
+            logger.info(f"{len(similar_issues)} similar issues found.")
+            return True
+        else:
+            logger.info("No similar issues found.")
+            return False
+
+    def post_comments(self):
+        """Add a comment to a GitHub issue.
+
+        Args:
+            issue_number (int): The issue number.
+            owner (str): The repository owner.
+            repo (str): The repository name.
+        Returns:
+            int: 1 if successful, 0 otherwise.
+        """
+        logger.info(f"Adding comment to issue #{self.issue_number}...")
+        github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
+
+        status = github_api.add_comments(issue_number=self.issue_number)
+
+        if status == 1:
+            logger.info(f"Comment added to issue #{self.issue_number}.")
+        else:
+            logger.warning(f"Failed to add comment to issue #{self.issue_number}.")
+
+        return status
+
+    def save_duplicate_issues(self, similar_issues):
+        """
+        get the issue number and save the duplicates
+        """
+        github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
+        for i in range(similar_issues):
+            duplicate_issue_id = github_api.get_issue_number(
+                issue_title=similar_issues[i]["issue_title"], df_issue=self.__issue_df
             )
 
-            # Log the result
-            if status:
-                logger.info("Comment added successfully.")
-            else:
-                logger.warning("Failed to add comment.")
-
-            return
-        else:
-            logger.info("No similar issues found")
-
-    else:
-        logger.info("Ignoring issues as other then opened")
-        return
+            duplicate = DuplicateIssues(
+                repository_name=self.repo,
+                created_issue_id=self.issue_number,
+                duplicate_issue_id=duplicate_issue_id,
+                received_dt_utc=datetime.now(),
+            )
+            duplicate.save_info()

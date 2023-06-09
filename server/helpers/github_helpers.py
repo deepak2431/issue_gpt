@@ -71,9 +71,7 @@ class GithubAPI:
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")
         return df
 
-    def get_issue_number(self, issue_title):
-        df_issue = self.get_issues()
-
+    def get_issue_number(self, issue_title, df_issue):
         result = df_issue[df_issue["issue_title"] == issue_title]
 
         if len(result) > 0:

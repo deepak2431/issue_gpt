@@ -61,7 +61,10 @@ class Repository(Resource):
 
         logger.info("Creating new RepositoryInfo object")
         repository_info = RepositoryInfo(
-            repository_name=repository, organisation_name=org_name
+            repository_name=repository,
+            organisation_name=org_name,
+            open_issues="0",
+            total_issues="0",
         )
 
         logger.info("Saving repository info to database")
@@ -91,6 +94,7 @@ class Issues(Resource):
 
 
 class Metrics(Resource):
+    # update this route
     def get(self):
         logger.info("Received request for issue metrics")
 
@@ -99,6 +103,9 @@ class Metrics(Resource):
         logger.info(f"Getting metrics for {org_name}")
 
         metrics = IssueMetrics.get_metrics(organisation_name=org_name)
+
+        repo_count = RepositoryInfo.get_repository_count(organisation_name=org_name)
+        metrics["repository_count"] = repo_count
 
         logger.info(f"{len(metrics)} metrics retrieved for {org_name}")
         return make_response(jsonify({"metrics": metrics}), 200)

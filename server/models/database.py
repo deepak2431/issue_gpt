@@ -11,7 +11,6 @@ def initialize_db(app):
     with app.app_context():
         from models.duplicate_issues import DuplicateIssues
         from models.github_keys import GithubKeys
-        from models.issue_metrics import IssueMetrics
         from models.repository_info import RepositoryInfo
 
         try:
