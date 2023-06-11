@@ -167,6 +167,10 @@ input:focus {
   flex-direction: row;
   justify-content: space-around;
   width: inherit;
+  margin: 5px;
+}
+.metrics_number h4 {
+  text-align: left;
 }
 .metrics_title {
   display: flex;

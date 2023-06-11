@@ -22,6 +22,7 @@ const tableHeadings = [
 ];
 
 const SERVER_URL = CONFIG.SERVER_URL;
+const ORG_NAME = CONFIG.ORG_NAME;
 
 const Issues = () => {
   const [repo, setRepo] = useState<string>("");
@@ -34,7 +35,7 @@ const Issues = () => {
   const getIssueData = async () => {
     try {
       const resp = await fetch(
-        SERVER_URL + "/duplicate_issues?org_name=deepak"
+        SERVER_URL + `/duplicate_issues?org_name=${ORG_NAME}`
       );
       if (resp.status === 200) {
         const data = await resp.json();
@@ -51,7 +52,7 @@ const Issues = () => {
 
   useEffect(() => {
     getIssueData();
-  }, []);
+  }, [repo]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepo(e.target.value);

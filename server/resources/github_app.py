@@ -34,6 +34,7 @@ class GithubApp:
 
         with app.app_context():
             issue = Issues(
+                organisation_name=self.owner,
                 repository_name=self.repo,
                 created_issue_id=self.issue_id,
                 duplicate_issue_id=None,

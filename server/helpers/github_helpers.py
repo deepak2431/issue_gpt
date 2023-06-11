@@ -3,14 +3,14 @@ import json
 from dotenv import load_dotenv
 import pandas as pd
 import requests
+import logging
 
 from github import Github
+from models.repository_info import RepositoryInfo
 
 load_dotenv()
 
 # Setup logging
-import logging
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -66,6 +66,19 @@ class GithubAPI:
                     "issue_number": issue.number,
                 }
             )
+
+        # save the repository info
+        from app import create_app
+
+        app = create_app()
+        with app.app_context():
+            repo_info = RepositoryInfo(
+                repository_name=self.repo_name,
+                organisation_name=self.owner,
+                open_issues=len(issues),
+                total_issues=None,
+            )
+            repo_info.save_info()
 
         df = pd.DataFrame(issues)
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")

@@ -3,19 +3,26 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux";
 import { CONFIG } from "../config";
 
-const metricsTitle = [
-  "Repository",
-  "Total issues",
-  "Open issues",
-  "Duplicate issues",
-];
+const metricsTitle = ["Repository", "Total tracked issues", "Duplicate issues"];
 const SERVER_URL = CONFIG.SERVER_URL;
+const ORG_NAME = CONFIG.ORG_NAME;
+
+interface metricsInfo {
+  repository_count: string;
+  tracked_issues: string;
+  duplicate_issues: string;
+}
 
 const Overview = () => {
-  const [metricsData, setMetricsData] = useState([]);
+  const orgName = useSelector((state: RootState) => state.settings.orgName);
+  const [metricsData, setMetricsData] = useState<metricsInfo>({
+    repository_count: "",
+    tracked_issues: "",
+    duplicate_issues: "",
+  });
 
   const getMetricsData = () => {
-    const metricsUrl = `${SERVER_URL}/metrics?org_name=deepak2431`;
+    const metricsUrl = `${SERVER_URL}/metrics?org_name=${ORG_NAME}`;
 
     fetch(metricsUrl)
       .then((res) => {
@@ -24,17 +31,16 @@ const Overview = () => {
         }
         return res.json();
       })
-      .then((res) => setMetricsData(res.metrics))
+      .then((res) => {
+        setMetricsData(res.metrics);
+      })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     getMetricsData();
-  }, []);
+  }, [orgName]);
 
-  const metricsNumber = [12, 89, 839, 10];
-
-  const orgName = useSelector((state: RootState) => state.settings.orgName);
   return (
     <div className="overview_info">
       <div className="overview_header">
@@ -42,9 +48,8 @@ const Overview = () => {
       </div>
       <div className="overview_metrics">
         <div className="metrics_number">
-          {metricsNumber.map((val) => (
-            <h2>{val}</h2>
-          ))}
+          {metricsData &&
+            Object.values(metricsData).map((val) => <h3>{val}</h3>)}
         </div>
         <div className="metrics_title">
           {metricsTitle.map((title) => (

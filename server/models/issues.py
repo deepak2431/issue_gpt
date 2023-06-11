@@ -21,6 +21,7 @@ class Issues(db.Model):
     def __init__(
         self,
         repository_name,
+        organisation_name,
         created_issue_id,
         duplicate_issue_id,
         comment_added,
@@ -28,6 +29,7 @@ class Issues(db.Model):
         received_dt_utc,
     ):
         self.repository_name = repository_name
+        self.organisation_name = organisation_name
         self.created_issue_id = created_issue_id
         self.duplicate_issue_id = duplicate_issue_id
         self.comment_added = comment_added
@@ -38,28 +40,6 @@ class Issues(db.Model):
         try:
             db.session.add(self)
             db.session.commit()
-        except Exception as e:
-            db.session.rollback()
-            raise
-
-    def get_duplicate_issues(organisation_name):
-        """
-        Get all duplicate issues for the given organisation name.
-        """
-        try:
-            duplicate_issues = Issues.query.filter_by(
-                organisation_name=organisation_name
-            ).all()
-            return [
-                {
-                    "organisation_name": issue.organisation_name,
-                    "repository_name": issue.repository_name,
-                    "created_issue_id": issue.created_issue_id,
-                    "duplicate_issue_id": issue.duplicate_issue_id,
-                    "received_dt_utc": issue.received_dt_utc,
-                }
-                for issue in duplicate_issues
-            ]
         except Exception as e:
             db.session.rollback()
             raise
@@ -75,3 +55,49 @@ class Issues(db.Model):
         except Exception as e:
             db.session.rollback()
             raise
+
+    def check_org_exists(organisation_name):
+        """
+        check if the org exists
+        """
+
+        org = Issues.query.filter(Issues.organisation_name == organisation_name)
+        if org is not None:
+            return True
+        return False
+
+    def get_duplicate_issues(organisation_name):
+        """
+        Get all duplicate issues for the given organisation name.
+        """
+        try:
+            duplicate_issues = Issues.query.filter(
+                Issues.organisation_name == organisation_name,
+                Issues.issue_processed == False,
+                Issues.duplicate_issue_id != None,
+            ).all()
+
+            return [
+                {
+                    "organisation_name": issue.organisation_name,
+                    "repository_name": issue.repository_name,
+                    "created_issue_id": issue.created_issue_id,
+                    "duplicate_issue_id": issue.duplicate_issue_id,
+                    "received_dt_utc": issue.received_dt_utc,
+                }
+                for issue in duplicate_issues
+            ]
+        except Exception as e:
+            db.session.rollback()
+            raise
+
+    def get_tracked_issues(organisation_name):
+        """
+        get the total tracked issues
+        """
+
+        # find count of all issues
+        tracked_issues = Issues.query.filter(
+            Issues.organisation_name == organisation_name
+        ).count()
+        return tracked_issues

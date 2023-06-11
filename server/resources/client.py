@@ -82,17 +82,20 @@ class Repository(Resource):
             return {"message": "Failed to save the repository"}, 400
 
 
-class Issues(Resource):
+class IssueInfo(Resource):
     def get(self):
         logger.info("Received request to get all duplicate issues")
 
         org_name = request.args.get("org_name")
 
+        if not Issues.check_org_exists(organisation_name=org_name):
+            return {"message": "No data found"}, 400
+
         logger.info(f"Getting duplicate issues for {org_name}")
         duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
 
         logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
-        return {"duplicate_issues": duplicate_issues}, 200
+        return make_response(jsonify({"duplicate_issues": duplicate_issues}), 200)
 
 
 class Metrics(Resource):
@@ -104,10 +107,20 @@ class Metrics(Resource):
 
         logger.info(f"Getting metrics for {org_name}")
 
-        metrics = {}  # TODO(update to return all the metrics)
+        if not Issues.check_org_exists(organisation_name=org_name):
+            return {"message": "No data found"}, 400
+
+        metrics = {}
 
         repo_count = RepositoryInfo.get_repository_count(organisation_name=org_name)
         metrics["repository_count"] = repo_count
 
+        tracked_issues = Issues.get_tracked_issues(organisation_name=org_name)
+        metrics["tracked_issues"] = tracked_issues
+
+        duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
+        metrics["duplicate_issues"] = len(duplicate_issues)
+
         logger.info(f"{len(metrics)} metrics retrieved for {org_name}")
+        logger.info(metrics)
         return make_response(jsonify({"metrics": metrics}), 200)
