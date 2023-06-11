@@ -9,7 +9,7 @@ def initialize_db(app):
     db.init_app(app)
 
     with app.app_context():
-        from models.duplicate_issues import DuplicateIssues
+        from models.issues import Issues
         from models.github_keys import GithubKeys
         from models.repository_info import RepositoryInfo
 

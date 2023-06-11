@@ -3,9 +3,13 @@ import os
 import hmac
 import hashlib
 from dotenv import load_dotenv
-from helpers.log_mod import logger
 from resources.github_app import GithubApp
 
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -83,17 +87,21 @@ def process_webhooks(webhooks_data):
             repo=parsed_data["repo"],
             issue_title=parsed_data["title"],
             issue_body=parsed_data["body"],
+            issue_id=parsed_data["issue_number"],
         )
-        # Add a comment to the issue
+        github_app.mark_under_processing()
 
         # check if there's an similar issue
         similar_issue_found = github_app.check_similar_issue()
 
         if similar_issue_found:
             # save the duplicate issues in the db
-            github_app.save_duplicate_issues(similar_issues=similar_issue_found)
+            duplicates = github_app.save_duplicate_issues(
+                similar_issues=similar_issue_found
+            )
 
-            status = github_app.post_comments()
+            if duplicates:
+                status = github_app.post_comments(duplicates=duplicates)
 
             # Log the result
             if status:

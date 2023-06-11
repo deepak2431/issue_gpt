@@ -71,18 +71,18 @@ class GithubAPI:
         logger.info(f"{len(df)} issues retrieved for {self.repo_name}.")
         return df
 
-    def get_issue_number(self, issue_title, df_issue):
+    def get_issue_number(self, issue_title, df_issue, n):
         result = df_issue[df_issue["issue_title"] == issue_title]
 
         if len(result) > 0:
-            issue_number = result.iloc[0]["issue_number"]
+            issue_number = result.iloc[n + 1]["issue_number"]
             logging.info(f"Issue #{issue_number} found with title {issue_title}")
             return issue_number
         else:
             logging.info(f"No issue found with title {issue_title}")
             return -1
 
-    def add_comments(self, issue_number):
+    def add_comments(self, issue_number, comment):
         """Add a comment to an issue."""
 
         comment_url = f"https://api.github.com/repos/{self.owner}/{self.repo_name}/issues/{issue_number}/comments"
@@ -93,7 +93,7 @@ class GithubAPI:
             "X-GitHub-Api-Version": "2022-11-28",
         }
 
-        comment_data = {"body": "This is a test comment feature"}
+        comment_data = {"body": comment}
 
         response = requests.post(comment_url, headers=headers, json=comment_data)
 

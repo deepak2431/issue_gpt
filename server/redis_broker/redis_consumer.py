@@ -1,6 +1,11 @@
 import json
 from redis_broker.redis_service import init_redis_client
 from resources.helpers import process_webhooks
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def consume_messages():
@@ -10,6 +15,8 @@ def consume_messages():
 
     # create the redis_client
     redis_client = init_redis_client()
+
+    logger.info("Listening for messages")
 
     # create the redis subscriber
     redis_subscriber = redis_client.pubsub()

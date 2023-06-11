@@ -1,10 +1,15 @@
 from dotenv import load_dotenv
 from datetime import datetime
 
-from helpers.log_mod import logger
 from helpers.github_helpers import GithubAPI
 from helpers.open_ai_helpers import SearchIssue
-from models.duplicate_issues import DuplicateIssues
+from models.issues import Issues
+
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 load_dotenv()
@@ -13,11 +18,31 @@ load_dotenv()
 class GithubApp:
     __issue_df = None
 
-    def __init__(self, owner, repo, issue_title, issue_body) -> None:
+    def __init__(self, owner, repo, issue_title, issue_body, issue_id) -> None:
         self.owner = owner
         self.repo = repo
         self.issue_title = issue_title
         self.issue_body = issue_body
+        self.issue_id = issue_id
+
+    def mark_under_processing(self):
+        """Marks the issue under processing status"""
+
+        from app import create_app
+
+        app = create_app()
+
+        with app.app_context():
+            issue = Issues(
+                repository_name=self.repo,
+                created_issue_id=self.issue_id,
+                duplicate_issue_id=None,
+                comment_added=False,
+                issue_processed=False,
+                received_dt_utc=datetime.now(),
+            )
+            issue.save_info()
+            return
 
     def check_similar_issue(self):
         """Check if a similar issue already exists."""
@@ -45,12 +70,12 @@ class GithubApp:
 
         if len(similar_issues) > 0:
             logger.info(f"{len(similar_issues)} similar issues found.")
-            return True
+            return similar_issues
         else:
             logger.info("No similar issues found.")
-            return False
+            return None
 
-    def post_comments(self):
+    def post_comments(self, duplicates):
         """Add a comment to a GitHub issue.
 
         Args:
@@ -60,15 +85,19 @@ class GithubApp:
         Returns:
             int: 1 if successful, 0 otherwise.
         """
-        logger.info(f"Adding comment to issue #{self.issue_number}...")
+        logger.info(f"Adding comment to issue #{self.issue_id}...")
         github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
 
-        status = github_api.add_comments(issue_number=self.issue_number)
+        comment = ", ".join([f"#{num}" for num in duplicates])
+
+        status = github_api.add_comments(
+            issue_number=self.issue_id, comment=f"Found duplicates with ${comment}"
+        )
 
         if status == 1:
-            logger.info(f"Comment added to issue #{self.issue_number}.")
+            logger.info(f"Comment added to issue #{self.issue_id}.")
         else:
-            logger.warning(f"Failed to add comment to issue #{self.issue_number}.")
+            logger.warning(f"Failed to add comment to issue #{self.issue_id}.")
 
         return status
 
@@ -76,16 +105,25 @@ class GithubApp:
         """
         get the issue number and save the duplicates
         """
-        github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
-        for i in range(similar_issues):
-            duplicate_issue_id = github_api.get_issue_number(
-                issue_title=similar_issues[i]["issue_title"], df_issue=self.__issue_df
-            )
 
-            duplicate = DuplicateIssues(
-                repository_name=self.repo,
-                created_issue_id=self.issue_number,
-                duplicate_issue_id=duplicate_issue_id,
-                received_dt_utc=datetime.now(),
+        from app import create_app
+
+        duplicated_issues = []
+        github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
+        for issue in similar_issues:
+            duplicate_issue_id = github_api.get_issue_number(
+                issue_title=issue["issues_title"], df_issue=self.__issue_df, n=2
             )
-            duplicate.save_info()
+            logger.info(duplicate_issue_id)
+            logger.info(type(duplicate_issue_id))
+
+            duplicated_issues.append(str(duplicate_issue_id))
+
+            app = create_app()
+            with app.app_context():
+                Issues.update_duplicate_issue(
+                    created_issue_id=self.issue_id,
+                    duplicate_issue_id=str(duplicate_issue_id),
+                )
+
+        return duplicated_issues

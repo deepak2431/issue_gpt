@@ -5,7 +5,11 @@ from flask_restful import Resource
 
 from resources.helpers import verify_webhook_signature
 from redis_broker.redis_service import init_redis_client
-from helpers.log_mod import logger
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class Home(Resource):

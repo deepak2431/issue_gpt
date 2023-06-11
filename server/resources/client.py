@@ -1,11 +1,15 @@
 from flask_restful import Resource, request
 from flask import jsonify, make_response
-from helpers.log_mod import logger
 
 from models.github_keys import GithubKeys
 from models.repository_info import RepositoryInfo
-from models.duplicate_issues import DuplicateIssues
-from models.issue_metrics import IssueMetrics
+from models.issues import Issues
+
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class GitKeys(Resource):
@@ -85,9 +89,7 @@ class Issues(Resource):
         org_name = request.args.get("org_name")
 
         logger.info(f"Getting duplicate issues for {org_name}")
-        duplicate_issues = DuplicateIssues.get_duplicate_issues(
-            organisation_name=org_name
-        )
+        duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
 
         logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
         return {"duplicate_issues": duplicate_issues}, 200
@@ -102,7 +104,7 @@ class Metrics(Resource):
 
         logger.info(f"Getting metrics for {org_name}")
 
-        metrics = IssueMetrics.get_metrics(organisation_name=org_name)
+        metrics = {}  # TODO(update to return all the metrics)
 
         repo_count = RepositoryInfo.get_repository_count(organisation_name=org_name)
         metrics["repository_count"] = repo_count
