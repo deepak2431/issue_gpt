@@ -34,12 +34,10 @@ const Issues = () => {
 
   const getIssueData = async () => {
     try {
-      const resp = await fetch(
-        SERVER_URL + `/duplicate_issues?org_name=${ORG_NAME}`
-      );
+      const resp = await fetch(SERVER_URL + `/issues?org_name=${ORG_NAME}`);
       if (resp.status === 200) {
         const data = await resp.json();
-        setIssueData(data.duplicate_issues);
+        setIssueData(data.issues);
         setLoading(false);
       } else {
         throw Error("Unable to fetch the data");
@@ -52,7 +50,7 @@ const Issues = () => {
 
   useEffect(() => {
     getIssueData();
-  }, [repo]);
+  }, [addRepo]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepo(e.target.value);
@@ -137,7 +135,7 @@ const Issues = () => {
       {!loading && !issueData && issueDataError && (
         <p className="loading_message">Error while fetching the data.</p>
       )}
-      {issueData.length &&
+      {issueData &&
         issueData.map(
           ({
             organisation_name,

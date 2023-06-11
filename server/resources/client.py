@@ -88,14 +88,33 @@ class IssueInfo(Resource):
 
         org_name = request.args.get("org_name")
 
+        recent = request.args.get("recent")
+
         if not Issues.check_org_exists(organisation_name=org_name):
             return {"message": "No data found"}, 400
+
+        if recent and org_name:
+            if recent == "recent_duplicate":
+                logger.info(f"Getting recent duplicate issues for {org_name}")
+
+                duplicate_issues = Issues.get_recent_duplicate(
+                    organisation_name=org_name
+                )
+                return make_response(
+                    jsonify({"issues": duplicate_issues}), 200
+                )
+            elif recent == "recent_open":
+                logger.info(f"Getting recent created issues for {org_name}")
+                duplicate_issues = Issues.get_recent_issues(organisation_name=org_name)
+                return make_response(
+                    jsonify({"issues": duplicate_issues}), 200
+                )
 
         logger.info(f"Getting duplicate issues for {org_name}")
         duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
 
         logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
-        return make_response(jsonify({"duplicate_issues": duplicate_issues}), 200)
+        return make_response(jsonify({"issues": duplicate_issues}), 200)
 
 
 class Metrics(Resource):

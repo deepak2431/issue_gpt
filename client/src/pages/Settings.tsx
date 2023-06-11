@@ -90,9 +90,9 @@ const Settings = () => {
             <h5>Organisation name</h5>
             <p className="settings_saved_info">{organisation_name}</p>
             <h5>Access Token</h5>
-            <p className="settings_saved_info">{access_token}</p>
+            <p className="settings_saved_info">**********</p>
             <h5>Webhooks secret</h5>
-            <p className="settings_saved_info">{webhooks_secret}</p>
+            <p className="settings_saved_info">**********</p>
           </div>
         </>
       ) : (

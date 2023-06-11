@@ -83,7 +83,6 @@ class Issues(db.Model):
                     "repository_name": issue.repository_name,
                     "created_issue_id": issue.created_issue_id,
                     "duplicate_issue_id": issue.duplicate_issue_id,
-                    "received_dt_utc": issue.received_dt_utc,
                 }
                 for issue in duplicate_issues
             ]
@@ -101,3 +100,56 @@ class Issues(db.Model):
             Issues.organisation_name == organisation_name
         ).count()
         return tracked_issues
+
+    def get_recent_duplicate(organisation_name):
+        """
+        Get the recent duplicate issues in the last 24 hours.
+        """
+        try:
+            yesterday = datetime.now() - timedelta(days=1)
+            recent_duplicates = (
+                Issues.query.filter(
+                    Issues.organisation_name == organisation_name,
+                    Issues.issue_processed == False,
+                    Issues.duplicate_issue_id != None,
+                    Issues.received_dt_utc > yesterday,
+                )
+                .limit(7)
+                .all()
+            )
+            return [
+                {
+                    "organisation_name": issue.organisation_name,
+                    "repository_name": issue.repository_name,
+                    "created_issue_id": issue.created_issue_id,
+                    "duplicate_issue_id": issue.duplicate_issue_id,
+                }
+                for issue in recent_duplicates
+            ]
+        except Exception as e:
+            db.session.rollback()
+            raise
+
+    def get_recent_issues(organisation_name):
+        """Get the recent issues added in the last 24 hours."""
+        try:
+            yesterday = datetime.now() - timedelta(days=1)
+            recent_issues = (
+                Issues.query.filter(
+                    Issues.organisation_name == organisation_name,
+                    Issues.received_dt_utc > yesterday,
+                )
+                .limit(7)
+                .all()
+            )
+            return [
+                {
+                    "organisation_name": issue.organisation_name,
+                    "repository_name": issue.repository_name,
+                    "created_issue_id": issue.created_issue_id,
+                }
+                for issue in recent_issues
+            ]
+        except Exception as e:
+            db.session.rollback()
+            raise

@@ -20,6 +20,8 @@ const Overview = () => {
     tracked_issues: "",
     duplicate_issues: "",
   });
+  const [recentDuplicates, setRecentDuplicates] = useState([]);
+  const [recentOpen, setRecentOpen] = useState([]);
 
   const getMetricsData = () => {
     const metricsUrl = `${SERVER_URL}/metrics?org_name=${ORG_NAME}`;
@@ -37,9 +39,41 @@ const Overview = () => {
       .catch((err) => console.log(err));
   };
 
+  const getRecentDuplicates = async () => {
+    const requestUrl = `${SERVER_URL}/issues?org_name=${ORG_NAME}&recent=recent_duplicate`
+
+    fetch(requestUrl)
+    .then((res) => {
+      if(res.status !== 200) {
+        throw new Error('Request failed')
+      }
+      return res.json()
+    })
+    .then((res) => setRecentDuplicates(res.issues))
+    .catch((err) => console.log(err))
+  }
+
+  const getRecentOpen = async () => {
+    const requestUrl = `${SERVER_URL}/issues?org_name=${ORG_NAME}&recent=recent_open`
+
+    fetch(requestUrl)
+    .then((res) => {
+      if(res.status !== 200) {
+        throw new Error('Request failed')
+      }
+      return res.json()
+    })
+    .then((res) => setRecentOpen(res.issues))
+    .catch((err) => console.log(err))
+  }
+
   useEffect(() => {
     getMetricsData();
+    getRecentDuplicates();
+    getRecentOpen();
   }, [orgName]);
+
+
 
   return (
     <div className="overview_info">
@@ -59,10 +93,21 @@ const Overview = () => {
       </div>
       <div className="overview_metrics_info">
         <div className="overview_section_1">
-          <p>Recent duplicate issues</p>
+          <h4 style={{textAlign: 'center', margin: '5px'}}>Recent duplicate issues</h4>
+          {
+            recentDuplicates && recentDuplicates.map(({repository_name, created_issue_id, duplicate_issue_id}) => (
+              <li>{`Found ${duplicate_issue_id} duplicate with ${created_issue_id} for the repository ${repository_name}`}</li>
+            ))
+          }
         </div>
         <div className="overview_section_2">
-          <p>Issues opened in last 24 hrs</p>
+        <h4 style={{textAlign: 'center', margin: '5px'}}>Recent opened issues</h4>
+
+          {
+            recentOpen && recentOpen.map(({ repository_name, created_issue_id}) => (
+              <li>{`Opened issue ${created_issue_id} in the ${repository_name} repository.`}</li>
+            ))
+          }
         </div>
       </div>
     </div>
