@@ -1,2 +1,2 @@
-# issue_checker
-Github App which checks if an issue exists earlier or needs action
+# IssueGPT
+Solve Github issues faster using GPT-4.
