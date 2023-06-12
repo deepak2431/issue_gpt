@@ -11,9 +11,8 @@ from github import Github
 
 load_dotenv()
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from helpers.log_mod import logger
+
 
 # embedding model parameters
 embedding_model = "text-embedding-ada-002"
@@ -87,7 +86,7 @@ class SearchIssue:
             lambda x: cosine_similarity(x, issue_embedding)
         )
 
-        threshold = 0.8
+        threshold = 0.95
 
         results = (
             self.df.sort_values("similarity", ascending=False)

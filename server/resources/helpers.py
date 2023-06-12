@@ -2,16 +2,29 @@ import json
 import os
 import hmac
 import hashlib
+import openai
 from dotenv import load_dotenv
 from resources.github_app import GithubApp
 
-import logging
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from helpers.log_mod import logger
+from models.issues import Issues
 
 load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+GPT_MODEL = "gpt-3.5-turbo"
+
+
+def get_possible_solution(question):
+
+    response = openai.ChatCompletion.create(
+    messages=[
+            {'role': 'system', 'content': 'You answer questions about the given problem working as an experieneced Python developer on a django blog project.'},
+            {'role': 'user', 'content': question},
+        ],
+        model=GPT_MODEL,
+        temperature=0,
+    )
+    return response['choices'][0]['message']['content']
 
 
 def verify_webhook_signature(data, signature):
@@ -81,38 +94,55 @@ def process_webhooks(webhooks_data):
 
     logger.info(f"Processing GitHub webhooks with action {webhook_action}")
 
-    if parsed_data["action"] == "opened":
-        github_app = GithubApp(
-            owner=parsed_data["owner"],
-            repo=parsed_data["repo"],
-            issue_title=parsed_data["title"],
-            issue_body=parsed_data["body"],
-            issue_id=parsed_data["issue_number"],
-        )
-        github_app.mark_under_processing()
+    from app import create_app
 
-        # check if there's an similar issue
-        similar_issue_found = github_app.check_similar_issue()
-
-        if similar_issue_found:
-            # save the duplicate issues in the db
-            duplicates = github_app.save_duplicate_issues(
-                similar_issues=similar_issue_found
+    app = create_app()
+    with app.app_context():
+        if parsed_data["action"] == "opened" and not Issues.check_issue_exists(
+            created_issue_id=parsed_data["issue_number"]
+        ):
+            github_app = GithubApp(
+                owner=parsed_data["owner"],
+                repo=parsed_data["repo"],
+                issue_title=parsed_data["title"],
+                issue_body=parsed_data["body"],
+                issue_id=parsed_data["issue_number"],
             )
+            github_app.mark_under_processing()
 
-            if duplicates:
-                status = github_app.post_comments(duplicates=duplicates)
+            # check if there's an similar issue
+            similar_issue_found = github_app.check_similar_issue()
 
-            # Log the result
-            if status:
-                logger.info("Comment added successfully.")
+            if similar_issue_found:
+                # save the duplicate issues in the db
+                duplicates = github_app.save_duplicate_issues(
+                    similar_issues=similar_issue_found
+                )
+
+                if duplicates:
+                    status = github_app.post_comments(
+                        duplicates=duplicates, comment_body=None
+                    )
+                else:
+                    open_ai_solution_suggestions = get_possible_solution(
+                        parsed_data["body"]
+                    )
+                    status = github_app.post_comments(
+                        duplicates=[], comment_body=open_ai_solution_suggestions
+                    )
+
+                # Log the result
+                if status:
+                    logger.info("Comment added successfully.")
+                else:
+                    logger.warning("Failed to add comment.")
+
+                return
             else:
-                logger.warning("Failed to add comment.")
+                logger.info(
+                    "No similar issues found. Adding steps for possible solution!"
+                )
 
-            return
         else:
-            logger.info("No similar issues found")
-
-    else:
-        logger.info("Ignoring issues as other then opened")
-        return
+            logger.info("Ignoring issues as other then opened")
+            return

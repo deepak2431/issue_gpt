@@ -25,3 +25,13 @@ class GithubKeys(db.Model):
         except Exception as e:
             db.session.rollback()
             raise
+
+    def get_access_token(organisation_name):
+        org = GithubKeys.query.filter(GithubKeys.organisation_name == organisation_name)
+
+        return org.personal_access_token
+
+    def get_webhooks_secret(organisation_name):
+        org = GithubKeys.query.filter(GithubKeys.organisation_name == organisation_name)
+
+        return org.webhooks_secret

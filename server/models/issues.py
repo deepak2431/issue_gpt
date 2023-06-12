@@ -56,6 +56,32 @@ class Issues(db.Model):
             db.session.rollback()
             raise
 
+    def update_processing_status(created_issue_id):
+        """
+        Updates the given duplicate_issue_id for the repository_name
+        """
+        try:
+            issue = Issues.query.filter_by(created_issue_id=created_issue_id).first()
+            issue.issue_processed = True
+            issue.comment_added = True
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            raise
+
+    def check_issue_exists(created_issue_id):
+        """
+        Check if the issues already exists/being processed
+        """
+        try:
+            issue = Issues.query.filter_by(created_issue_id=created_issue_id).first()
+            if issue is not None:
+                return True
+            return False
+        except Exception as e:
+            db.session.rollback()
+            raise
+
     def check_org_exists(organisation_name):
         """
         check if the org exists
@@ -73,7 +99,7 @@ class Issues(db.Model):
         try:
             duplicate_issues = Issues.query.filter(
                 Issues.organisation_name == organisation_name,
-                Issues.issue_processed == False,
+                Issues.issue_processed == True,
                 Issues.duplicate_issue_id != None,
             ).all()
 
@@ -110,7 +136,7 @@ class Issues(db.Model):
             recent_duplicates = (
                 Issues.query.filter(
                     Issues.organisation_name == organisation_name,
-                    Issues.issue_processed == False,
+                    Issues.issue_processed == True,
                     Issues.duplicate_issue_id != None,
                     Issues.received_dt_utc > yesterday,
                 )

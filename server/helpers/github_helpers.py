@@ -7,12 +7,9 @@ import logging
 
 from github import Github
 from models.repository_info import RepositoryInfo
+from helpers.log_mod import logger
 
 load_dotenv()
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 class GithubAPI:
@@ -51,7 +48,7 @@ class GithubAPI:
         self.owner = owner
         logger.info(f"GithubAPI object initialized for {repo_name}.")
 
-    def get_issues(self):
+    def get_issues(self, issue_number):
         logger.info(f"Getting issues for {self.repo_name}...")
         github_access_token = os.getenv("GITHUB_ACCESS_TOKEN")
         g = Github(github_access_token)
@@ -59,13 +56,16 @@ class GithubAPI:
 
         issues = []
         for issue in repo.get_issues(state="open"):
-            issues.append(
-                {
-                    "issue_title": issue.title,
-                    "issue_description": issue.body,
-                    "issue_number": issue.number,
-                }
-            )
+            if issue_number == issue.number:
+                continue
+            else:
+                issues.append(
+                    {
+                        "issue_title": issue.title,
+                        "issue_description": issue.body,
+                        "issue_number": issue.number,
+                    }
+                )
 
         # save the repository info
         from app import create_app
@@ -88,9 +88,14 @@ class GithubAPI:
         result = df_issue[df_issue["issue_title"] == issue_title]
 
         if len(result) > 0:
-            issue_number = result.iloc[n + 1]["issue_number"]
-            logging.info(f"Issue #{issue_number} found with title {issue_title}")
-            return issue_number
+            if len(result) > n:
+                issue_number = result.iloc[n + 1]["issue_number"]
+                logging.info(f"Issue #{issue_number} found with title {issue_title}")
+                return issue_number
+            else:
+                issue_number = result.iloc[0]["issue_number"]
+                logging.info(f"Issue #{issue_number} found with title {issue_title}")
+                return issue_number
         else:
             logging.info(f"No issue found with title {issue_title}")
             return -1

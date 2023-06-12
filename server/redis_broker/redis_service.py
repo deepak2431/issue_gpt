@@ -11,3 +11,6 @@ def init_redis_client():
     )
 
     return redis_client
+
+
+redis_client = init_redis_client()

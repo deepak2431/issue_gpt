@@ -8,11 +8,7 @@ from redis_broker.redis_consumer import consume_messages
 from models.database import initialize_db
 from resources.routes import initialize_routes
 
-import logging
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from helpers.log_mod import logger
 
 
 def create_app():

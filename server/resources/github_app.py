@@ -5,11 +5,7 @@ from helpers.github_helpers import GithubAPI
 from helpers.open_ai_helpers import SearchIssue
 from models.issues import Issues
 
-import logging
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from helpers.log_mod import logger
 
 
 load_dotenv()
@@ -50,7 +46,7 @@ class GithubApp:
 
         logger.info(f"Checking for similar issues in {self.owner}/{self.repo}...")
         github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
-        df = github_api.get_issues()
+        df = github_api.get_issues(issue_number=self.issue_id)
 
         self.__issue_df = df
 
@@ -76,7 +72,7 @@ class GithubApp:
             logger.info("No similar issues found.")
             return None
 
-    def post_comments(self, duplicates):
+    def post_comments(self, duplicates, comment_body):
         """Add a comment to a GitHub issue.
 
         Args:
@@ -88,14 +84,18 @@ class GithubApp:
         """
         logger.info(f"Adding comment to issue #{self.issue_id}...")
         github_api = GithubAPI(repo_name=self.repo, owner=self.owner)
+        comment = None
 
-        comment = ", ".join([f"#{num}" for num in duplicates])
+        if not comment_body:
+            duplicates_str = ", ".join([f"#{num}" for num in duplicates])
+            comment = f"Found duplicates with ${duplicates_str}"
+        else:
+            comment = comment_body
 
-        status = github_api.add_comments(
-            issue_number=self.issue_id, comment=f"Found duplicates with ${comment}"
-        )
+        status = github_api.add_comments(issue_number=self.issue_id, comment=comment)
 
         if status == 1:
+            Issues.update_processing_status(created_issue_id=self.issue_id)
             logger.info(f"Comment added to issue #{self.issue_id}.")
         else:
             logger.warning(f"Failed to add comment to issue #{self.issue_id}.")

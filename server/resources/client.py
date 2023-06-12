@@ -5,11 +5,7 @@ from models.github_keys import GithubKeys
 from models.repository_info import RepositoryInfo
 from models.issues import Issues
 
-import logging
-
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from helpers.log_mod import logger
 
 
 class GitKeys(Resource):
@@ -79,7 +75,7 @@ class Repository(Resource):
             return {"message": "Repository added successfully"}, 201
         except Exception as e:
             logger.error("Failed to save repository info")
-            return {"message": "Failed to save the repository"}, 400
+            return {"message": "Failed to save the repository"}, 500
 
 
 class IssueInfo(Resource):
@@ -91,7 +87,7 @@ class IssueInfo(Resource):
         recent = request.args.get("recent")
 
         if not Issues.check_org_exists(organisation_name=org_name):
-            return {"message": "No data found"}, 400
+            return {"message": "No data found"}, 404
 
         if recent and org_name:
             if recent == "recent_duplicate":
@@ -100,15 +96,11 @@ class IssueInfo(Resource):
                 duplicate_issues = Issues.get_recent_duplicate(
                     organisation_name=org_name
                 )
-                return make_response(
-                    jsonify({"issues": duplicate_issues}), 200
-                )
+                return make_response(jsonify({"issues": duplicate_issues}), 200)
             elif recent == "recent_open":
                 logger.info(f"Getting recent created issues for {org_name}")
                 duplicate_issues = Issues.get_recent_issues(organisation_name=org_name)
-                return make_response(
-                    jsonify({"issues": duplicate_issues}), 200
-                )
+                return make_response(jsonify({"issues": duplicate_issues}), 200)
 
         logger.info(f"Getting duplicate issues for {org_name}")
         duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
@@ -127,7 +119,7 @@ class Metrics(Resource):
         logger.info(f"Getting metrics for {org_name}")
 
         if not Issues.check_org_exists(organisation_name=org_name):
-            return {"message": "No data found"}, 400
+            return {"message": "No data found"}, 404
 
         metrics = {}
 

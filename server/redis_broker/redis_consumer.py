@@ -1,11 +1,11 @@
 import json
-from redis_broker.redis_service import init_redis_client
-from resources.helpers import process_webhooks
-import logging
 
-# Setup logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from redis_broker.redis_service import redis_client
+from resources.helpers import process_webhooks
+from helpers.log_mod import logger
+
+
+is_subscribed = False
 
 
 def consume_messages():
@@ -14,17 +14,19 @@ def consume_messages():
     """
 
     # create the redis_client
-    redis_client = init_redis_client()
 
     logger.info("Listening for messages")
+    global is_subscribed
 
     # create the redis subscriber
     redis_subscriber = redis_client.pubsub()
 
-    # subscribe to the issue events
-    redis_subscriber.subscribe(
-        "issue_create",
-    )
+    if not is_subscribed:
+        # subscribe to the issue events
+        redis_subscriber.subscribe(
+            "issue_create",
+        )
+        is_subscribed = True
 
     for message in redis_subscriber.listen():
         if message.get("type") == "message":
