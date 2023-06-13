@@ -179,3 +179,54 @@ class Issues(db.Model):
         except Exception as e:
             db.session.rollback()
             raise
+
+    def get_weeks_issues(organisation_name):
+        """Get the issues added in the last 7 days grouped by day."""
+        try:
+            last_week = datetime.now() - timedelta(days=7)
+            week_issues = Issues.query.filter(
+                Issues.organisation_name == organisation_name,
+                Issues.received_dt_utc > last_week,
+            ).all()
+
+            week_issues_by_day = {}
+            for issue in week_issues:
+                issue_day = issue.received_dt_utc.strftime("%A")
+                if issue_day not in week_issues_by_day:
+                    week_issues_by_day[issue_day] = {
+                        "name": str(issue_day),
+                        "opened": 0,
+                        "duplicate": 0,
+                    }
+                if issue.duplicate_issue_id:
+                    week_issues_by_day[issue_day]["duplicate"] += 1
+                else:
+                    week_issues_by_day[issue_day]["opened"] += 1
+
+            days = [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ]
+            data = []
+            for day in days:
+                if day in week_issues_by_day:
+                    data.append(
+                        {
+                            "name": day,
+                            "Open": week_issues_by_day[day]["opened"],
+                            "Duplicate": week_issues_by_day[day]["duplicate"],
+                            "total": int(week_issues_by_day[day]["duplicate"])
+                            + int(week_issues_by_day[day]["opened"]),
+                        }
+                    )
+                else:
+                    data.append({"name": day, "Open": 0, "Duplicate": 0, "total": 0})
+            return data
+        except Exception as e:
+            db.session.rollback()
+            raise

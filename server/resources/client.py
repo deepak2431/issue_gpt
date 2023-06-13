@@ -101,6 +101,10 @@ class IssueInfo(Resource):
                 logger.info(f"Getting recent created issues for {org_name}")
                 duplicate_issues = Issues.get_recent_issues(organisation_name=org_name)
                 return make_response(jsonify({"issues": duplicate_issues}), 200)
+            elif recent == "recent_week":
+                logger.info(f"Getting recent week issues for {org_name}")
+                duplicate_issues = Issues.get_weeks_issues(organisation_name=org_name)
+                return make_response(jsonify({"issues": duplicate_issues}), 200)
 
         logger.info(f"Getting duplicate issues for {org_name}")
         duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)

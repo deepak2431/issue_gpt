@@ -15,16 +15,18 @@ GPT_MODEL = "gpt-3.5-turbo"
 
 
 def get_possible_solution(question):
-
     response = openai.ChatCompletion.create(
-    messages=[
-            {'role': 'system', 'content': 'You answer questions about the given problem working as an experieneced Python developer on a django blog project.'},
-            {'role': 'user', 'content': question},
+        messages=[
+            {
+                "role": "system",
+                "content": "You answer questions about the given problem working as an experieneced Python developer on a django blog project.",
+            },
+            {"role": "user", "content": question},
         ],
         model=GPT_MODEL,
         temperature=0,
     )
-    return response['choices'][0]['message']['content']
+    return response["choices"][0]["message"]["content"]
 
 
 def verify_webhook_signature(data, signature):
@@ -119,7 +121,7 @@ def process_webhooks(webhooks_data):
                     similar_issues=similar_issue_found
                 )
 
-                if duplicates:
+                if len(duplicates) > 0:
                     status = github_app.post_comments(
                         duplicates=duplicates, comment_body=None
                     )

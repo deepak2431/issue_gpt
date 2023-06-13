@@ -12,7 +12,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 140vh;
   background: #071021;
 }
 .sidebar p {
@@ -151,14 +151,12 @@ input:focus {
 .overview_section_1,
 .overview_section_2 {
   box-shadow: var(--box-shadow-color);
-  height: 200px;
   width: 400px;
   padding: 15px;
 }
 .overview_metrics {
   margin: 10px;
   width: 96%;
-  height: 100px;
   box-shadow: var(--box-shadow-color);
   padding: 25px;
 }

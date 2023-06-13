@@ -86,7 +86,7 @@ class SearchIssue:
             lambda x: cosine_similarity(x, issue_embedding)
         )
 
-        threshold = 0.95
+        threshold = 0.85
 
         results = (
             self.df.sort_values("similarity", ascending=False)
@@ -112,5 +112,5 @@ class SearchIssue:
                 }
             )
 
-        logger.info(f"{n} most similar issues found.")
+        logger.info(f"{len(similar_issues)} most similar issues found.")
         return similar_issues

@@ -118,13 +118,14 @@ class GithubApp:
             logger.info(duplicate_issue_id)
             logger.info(type(duplicate_issue_id))
 
-            duplicated_issues.append(str(duplicate_issue_id))
+            if str(duplicate_issue_id) != "-1":
+                duplicated_issues.append(str(duplicate_issue_id))
 
-            app = create_app()
-            with app.app_context():
-                Issues.update_duplicate_issue(
-                    created_issue_id=self.issue_id,
-                    duplicate_issue_id=str(duplicate_issue_id),
-                )
+                app = create_app()
+                with app.app_context():
+                    Issues.update_duplicate_issue(
+                        created_issue_id=self.issue_id,
+                        duplicate_issue_id=str(duplicate_issue_id),
+                    )
 
         return duplicated_issues
