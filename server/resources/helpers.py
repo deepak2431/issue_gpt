@@ -126,24 +126,26 @@ def process_webhooks(webhooks_data):
                         duplicates=duplicates, comment_body=None
                     )
                 else:
+                    logger.info("getting the possible solutions")
                     open_ai_solution_suggestions = get_possible_solution(
                         parsed_data["body"]
                     )
                     status = github_app.post_comments(
                         duplicates=[], comment_body=open_ai_solution_suggestions
                     )
-
-                # Log the result
+                
                 if status:
-                    logger.info("Comment added successfully.")
-                else:
-                    logger.warning("Failed to add comment.")
-
-                return
+                    logger.info("Comment added successfully!")
             else:
-                logger.info(
-                    "No similar issues found. Adding steps for possible solution!"
-                )
+                logger.info("getting the possible solutions")
+                open_ai_solution_suggestions = get_possible_solution(
+                        parsed_data["body"]
+                    )
+                status = github_app.post_comments(
+                        duplicates=[], comment_body=open_ai_solution_suggestions)
+
+                if status:
+                    logger.info("Comment added successfully!")
 
         else:
             logger.info("Ignoring issues as other then opened")
