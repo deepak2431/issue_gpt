@@ -133,16 +133,17 @@ def process_webhooks(webhooks_data):
                     status = github_app.post_comments(
                         duplicates=[], comment_body=open_ai_solution_suggestions
                     )
-                
+
                 if status:
                     logger.info("Comment added successfully!")
             else:
                 logger.info("getting the possible solutions")
                 open_ai_solution_suggestions = get_possible_solution(
-                        parsed_data["body"]
-                    )
+                    parsed_data["body"]
+                )
                 status = github_app.post_comments(
-                        duplicates=[], comment_body=open_ai_solution_suggestions)
+                    duplicates=[], comment_body=open_ai_solution_suggestions
+                )
 
                 if status:
                     logger.info("Comment added successfully!")
