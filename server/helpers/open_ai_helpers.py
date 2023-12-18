@@ -101,7 +101,7 @@ class SearchIssue:
         for r in results:
             issues_document = r[:50000]
             issues_body = issues_document.split(";")
-            logger.info(f"Loggine issue body, {issues_body}")
+            logger.info(f"Logging issue body, {issues_body}")
             issue_description = issues_body[0]
             issues_title = issues_body[1]
 
