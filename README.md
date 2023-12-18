@@ -10,3 +10,8 @@ The Issue-GPT is an application developed to help organizations efficiently trac
 - Backend - Flask, MySQL
 - Frontend - React
 
+## High level architecture
+
+![High Level Architecture](./architecture.png)
+
+
