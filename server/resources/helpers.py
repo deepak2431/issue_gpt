@@ -19,7 +19,7 @@ def get_possible_solution(question):
         messages=[
             {
                 "role": "system",
-                "content": "You answer questions about the given problem working as an experieneced Python developer on a django blog project.",
+                "content": "You answer questions about the given problem working as an experieneced Python developer.",
             },
             {"role": "user", "content": question},
         ],

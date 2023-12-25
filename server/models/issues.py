@@ -87,10 +87,8 @@ class Issues(db.Model):
         check if the org exists
         """
 
-        org = Issues.query.filter(Issues.organisation_name == organisation_name)
-        if org is not None:
-            return True
-        return False
+        org = Issues.query.filter(Issues.organisation_name == organisation_name).first()
+        return org is not None
 
     def get_duplicate_issues(organisation_name):
         """

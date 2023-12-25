@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   issue_checker_service:
-    image: issue_service
+    image: issue_gpt
     build:
       context: .
       dockerfile: Dockerfile

@@ -78,38 +78,44 @@ class Repository(Resource):
             return {"message": "Failed to save the repository"}, 500
 
 
-class IssueInfo(Resource):
+class RecentWeekIssue(Resource):
     def get(self):
         logger.info("Received request to get all duplicate issues")
 
         org_name = request.args.get("org_name")
 
-        recent = request.args.get("recent")
-
-        if not Issues.check_org_exists(organisation_name=org_name):
+        if not Issues.check_org_exists(organisation_name=org_name) or org_name is None:
             return {"message": "No data found"}, 404
 
-        if recent and org_name:
-            if recent == "recent_duplicate":
-                logger.info(f"Getting recent duplicate issues for {org_name}")
+        logger.info(f"Getting recent week issues for {org_name}")
+        duplicate_issues = Issues.get_weeks_issues(organisation_name=org_name)
+        return make_response(jsonify({"issues": duplicate_issues}), 200)
 
-                duplicate_issues = Issues.get_recent_duplicate(
-                    organisation_name=org_name
-                )
-                return make_response(jsonify({"issues": duplicate_issues}), 200)
-            elif recent == "recent_open":
-                logger.info(f"Getting recent created issues for {org_name}")
-                duplicate_issues = Issues.get_recent_issues(organisation_name=org_name)
-                return make_response(jsonify({"issues": duplicate_issues}), 200)
-            elif recent == "recent_week":
-                logger.info(f"Getting recent week issues for {org_name}")
-                duplicate_issues = Issues.get_weeks_issues(organisation_name=org_name)
-                return make_response(jsonify({"issues": duplicate_issues}), 200)
+class RecentOpenIssue(Resource):
+    def get(self):
 
-        logger.info(f"Getting duplicate issues for {org_name}")
-        duplicate_issues = Issues.get_duplicate_issues(organisation_name=org_name)
+        org_name = request.args.get("org_name")
 
-        logger.info(f"{len(duplicate_issues)} duplicate issues found for {org_name}")
+
+        if not Issues.check_org_exists(organisation_name=org_name) or org_name is None:
+            return {"message": "No data found"}, 404    
+        
+        duplicate_issues = Issues.get_weeks_issues(organisation_name=org_name)
+        return make_response(jsonify({"issues": duplicate_issues}), 200)
+
+class RecentDuplicateIssue(Resource):
+    def get(self):
+
+        org_name = request.args.get("org_name")
+
+        if not Issues.check_org_exists(organisation_name=org_name) or org_name is None:
+            return {"message": "No data found"}, 404
+
+        logger.info(f"Getting recent duplicate issues for {org_name}")
+
+        duplicate_issues = Issues.get_recent_duplicate(
+            organisation_name=org_name
+        )
         return make_response(jsonify({"issues": duplicate_issues}), 200)
 
 
