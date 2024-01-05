@@ -1,0 +1,1615 @@
+repo_name: deepak2431/issue_gpt
+report_id: 838ef2a891b97cc3e97029085192538b
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-05T08:16:59+00:00'
+requested_by: deepak2431
+provider: github
+branch: main
+detected_tools_count: 105
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: Jinja
+  description: Full featured template engine for Python
+  website_url: https://palletsprojects.com/p/jinja/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Templating Languages & Extensions
+  image_url: https://img.stackshare.io/service/2303/New_Project__20_.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: Matplotlib
+  description: A plotting library for the Python programming language
+  website_url: http://matplotlib.org
+  open_source: false
+  hosted_saas: false
+  category: Libraries
+  sub_category: Charting Libraries
+  image_url: https://img.stackshare.io/service/2993/2DZC4KaA_400x400.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-07 07:17:49.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: React Router
+  description: A complete routing solution for React.js
+  website_url: https://github.com/rackt/react-router
+  version: 6.11.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/3350/8261421.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: Recharts
+  description: Redefined chart library built with React and D3
+  website_url: http://recharts.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Charting Libraries
+  image_url: https://img.stackshare.io/service/5608/13690587.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-06-13 08:05:23.000000000 Z
+- name: Redux
+  description: Predictable state container for JavaScript apps
+  website_url: https://redux.js.org/
+  version: 4.2.1
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: State Management Library
+  image_url: https://img.stackshare.io/service/4074/13142323.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: Redis
+  description: Open source (BSD licensed), in-memory data structure store
+  website_url: http://redis.io/
+  version: 4.5.4
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: In-Memory Databases
+  image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/docker-compose.yml
+  last_updated_by: deepak2431
+  last_updated_on: 2023-06-11 08:39:03.000000000 Z
+- name: Redux Persist
+  description: A library to persist and rehydrate a redux store
+  website_url: https://github.com/rt2zz/redux-persist
+  version: 6.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/6740/no-img-open-source.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: SQLAlchemy
+  description: The Python SQL Toolkit and Object Relational Mapper
+  website_url: http://www.sqlalchemy.org/
+  version: 2.0.12
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Object Relational Mapper (ORM)
+  image_url: https://img.stackshare.io/service/1839/q5uAkmy7.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 27.5.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-07 07:17:49.000000000 Z
+- name: Prettier
+  description: 'Prettier is an opinionated code formatter. '
+  website_url: https://prettier.io/
+  version: 2.8.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Zope
+  description: 'A free and open source web application server written in the object-oriented
+    programming language “Python” '
+  website_url: https://www.zope.org
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Web Servers
+  image_url: https://img.stackshare.io/service/6969/zopeHIres_400x400.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: gevent
+  description: Coroutine network library for Python
+  website_url: http://gevent.org
+  version: 22.10.2
+  open_source: false
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Web Servers
+  image_url: https://img.stackshare.io/service/1772/s9Bm2Iyx_400x400.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-07 07:17:49.000000000 Z
+- name: Pillow
+  description: Python Imaging Library
+  website_url: https://python-pillow.github.io/
+  open_source: true
+  hosted_saas: false
+  category: Assets and Media
+  sub_category: Image Processing and Management
+  image_url: https://img.stackshare.io/service/2375/default_1f67b0ca7416a9f52beb655f90b5602d5ef74b75.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Alpine Linux
+  description: Security-oriented, lightweight Linux distribution based on musl libc
+    and busybox
+  website_url: https://www.alpinelinux.org/
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Operating Systems
+  image_url: https://img.stackshare.io/service/6429/alpine_linux.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/docker-compose.yml
+  detection_source: server/docker-compose.yml
+  last_updated_by: deepak2431
+  last_updated_on: 2023-06-11 08:39:03.000000000 Z
+- name: NumPy
+  description: Fundamental package for scientific computing with Python
+  website_url: http://www.numpy.org/
+  version: 1.24.3
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Data Science Tools
+  image_url: https://img.stackshare.io/service/2179/default_332f874a2edb2686f578aa6389313efcea1eec41.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: OpenAI
+  description: Creating safe AGI that benefits all
+  website_url: https://openai.com/
+  version: 0.27.6
+  open_source: false
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Models
+  image_url: https://img.stackshare.io/service/48786/default_8b1119bcbb159cebebc2f6cfc9cd2e359b169d22.jpg
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: SciPy
+  description: Scientific Computing Tools for Python
+  website_url: http://www.scipy.org
+  version: 1.10.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Data Science Tools
+  image_url: https://img.stackshare.io/service/3303/scipyshiny_small.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt
+  detection_source: Repo Metadata
+- name: Flask
+  description: A simple framework for building complex web applications
+  package_url: https://pypi.org/project/Flask
+  version: 2.3.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19834/default_58dbe7b4d7ec447b62773209af0f9a31bbabf5bd.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Flask-Cors
+  description: A Flask extension adding a decorator for CORS support
+  package_url: https://pypi.org/project/Flask-Cors
+  version: 3.0.10
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19977/default_29192d68c64b1a3be468b1b73c2a129fc390c4f4.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Flask-RESTful
+  description: Simple framework for creating REST APIs
+  package_url: https://pypi.org/project/Flask-RESTful
+  version: 0.3.9
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20034/default_a3692729f5b4ca7eb94218522ed4260bba4a5c15.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Flask-SQLAlchemy
+  description: Adds SQLAlchemy support to your Flask application
+  package_url: https://pypi.org/project/Flask-SQLAlchemy
+  version: 3.0.3
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19941/default_aacb529ceff756b62765790d8d6787a041d514ff.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: MarkupSafe
+  description: Safely add untrusted strings to HTML/XML markup
+  package_url: https://pypi.org/project/MarkupSafe
+  version: 2.1.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19945/default_0b0a94e1bdf3e64deeccb23892ca2335bdc30e4f.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: PyGithub
+  description: Use the full Github API v3
+  package_url: https://pypi.org/project/PyGithub
+  version: 1.58.1
+  license: LGPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19957/default_f0290ff2792e2af7d13f5c82ed82206842ec288d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: PyJWT
+  description: JSON Web Token implementation in Python
+  package_url: https://pypi.org/project/PyJWT
+  version: 2.6.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19883/default_3863c7bb51d307217c188e059f67ca417c51efe3.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: PyNaCl
+  description: Python binding to the Networking and Cryptography
+  package_url: https://pypi.org/project/PyNaCl
+  version: 1.5.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20262/default_1842575018db691e6f93d8a9a1aa65cdc2a55c20.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: PySocks
+  description: A Python SOCKS client module
+  package_url: https://pypi.org/project/PySocks
+  version: 1.7.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20098/default_5297f13e5d732665caff8f16d9bfcd71481f98b6.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: PyYAML
+  description: YAML parser and emitter for Python
+  package_url: https://pypi.org/project/PyYAML
+  version: '6.0'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19829/default_74a61b43bdb9fc0cba2978316b9976f43545029b.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: Werkzeug
+  description: The comprehensive WSGI web application library
+  package_url: https://pypi.org/project/Werkzeug
+  version: 2.3.3
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19890/default_87fc2af3f2409064833512bb6fc5b04443a2e6aa.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: aiohttp
+  description: Async http client/server framework
+  package_url: https://pypi.org/project/aiohttp
+  version: 3.8.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19852/default_d748224707283d9d8a73c2323730c87bda6b313a.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: aiohttp's ClientSession is vulnerable to CRLF injection via version
+    cve_id: CVE-2023-49081
+    cve_url: https://github.com/advisories/GHSA-q3qx-c6g2-7pw2
+    detected_date: Nov 28
+    severity: high
+    first_patched: 3.9.0
+  - name: aiohttp has vulnerable dependency that is vulnerable to request smuggling
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-pjjw-qhg8-p2p9
+    detected_date: Nov 29
+    severity: moderate
+    first_patched: 3.8.6
+  - name: aiohttp's ClientSession is vulnerable to CRLF injection via method
+    cve_id: CVE-2023-49082
+    cve_url: https://github.com/advisories/GHSA-qvrw-v9rv-5rjx
+    detected_date: Nov 28
+    severity: moderate
+    first_patched: 3.9.0
+  - name: AIOHTTP has problems in HTTP parser (the python one, not llhttp)
+    cve_id: CVE-2023-47627
+    cve_url: https://github.com/advisories/GHSA-gfw2-4jvh-wgfg
+    detected_date: Nov 15
+    severity: moderate
+    first_patched: 3.8.6
+  - name: aiohttp.web.Application vulnerable to HTTP request smuggling via llhttp
+      HTTP request parser
+    cve_id: CVE-2023-37276
+    cve_url: https://github.com/advisories/GHSA-45c4-8wx5-qw6w
+    detected_date: Jul 21
+    severity: moderate
+    first_patched: 3.8.5
+- name: aniso8601
+  description: A library for parsing ISO 8601 strings
+  package_url: https://pypi.org/project/aniso8601
+  version: 9.0.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20255/default_49d350d2ae446ec5a00ebd45eeeaa0c300409a71.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: async-timeout
+  description: Timeout context manager for asyncio programs
+  package_url: https://pypi.org/project/async-timeout
+  version: 4.0.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20820/default_33e8d7fbba8bfff26ed0101b65f3a3af5fd63b4e.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: asyncio
+  description: Reference implementation of PEP 3156
+  package_url: https://pypi.org/project/asyncio
+  version: 3.4.3
+  license: Python-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: attrs
+  description: Classes Without Boilerplate
+  package_url: https://pypi.org/project/attrs
+  version: 23.1.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19857/default_4a8a8fdc10130068bf295812b98e9b72fb42fe70.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: black
+  description: The uncompromising code formatter
+  package_url: https://pypi.org/project/black
+  version: 23.3.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20099/default_029b9bbfb6be2cd34bebeda5b8e1e80a1d22441c.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: blinker
+  description: Fast, simple object-to-object and broadcast signaling
+  package_url: https://pypi.org/project/blinker
+  version: 1.6.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20273/default_847617f8273bac4dd5921370b0684f29c3397a68.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: certifi
+  description: Python package for providing Mozilla's CA Bundle
+  package_url: https://pypi.org/project/certifi
+  version: 2022.12.7
+  license: MPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19849/default_75c38a39b9f0062814489e2ec2cbfca0ca15d9ba.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: Removal of e-Tugra root certificate
+    cve_id: CVE-2023-37920
+    cve_url: https://github.com/advisories/GHSA-xqr8-7jwr-rhp7
+    detected_date: Jul 26
+    severity: high
+    first_patched: 2023.7.22
+- name: cffi
+  description: Foreign Function Interface for Python calling C code
+  package_url: https://pypi.org/project/cffi
+  version: 1.15.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19909/default_67f813d4aac73d024261bcfded6ef2b918e384a0.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: charset-normalizer
+  description: The Real First Universal Charset Detector
+  package_url: https://pypi.org/project/charset-normalizer
+  version: 3.1.0
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: click
+  description: Composable command line interface toolkit
+  package_url: https://pypi.org/project/click
+  version: 8.1.3
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19830/default_74a61b43bdb9fc0cba2978316b9976f43545029b.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: colorama
+  description: Cross-platform colored terminal text
+  package_url: https://pypi.org/project/colorama
+  version: 0.4.6
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19845/default_accee5d2b8ed75c2245f13504daf75b1cbc8cc9f.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: cryptography
+  description: Cryptography is a package which provides cryptographic recipes and
+    primitives to Python developers
+  package_url: https://pypi.org/project/cryptography
+  version: 40.0.2
+  license: BSD-3-Clause,Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19850/default_db2ab2702f70e20c272f6ce65251108fb2b8f1ea.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: cryptography mishandles SSH certificates
+    cve_id: CVE-2023-38325
+    cve_url: https://github.com/advisories/GHSA-cf7p-gm2m-833m
+    detected_date: Jul 15
+    severity: high
+    first_patched: 41.0.2
+  - name: cryptography vulnerable to NULL-dereference when loading PKCS7 certificates
+    cve_id: CVE-2023-49083
+    cve_url: https://github.com/advisories/GHSA-jfhm-5ghh-2f97
+    detected_date: Nov 29
+    severity: moderate
+    first_patched: 41.0.6
+  - name: pyca/cryptography's wheels include vulnerable OpenSSL
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-jm77-qphf-c4w8
+    detected_date: Aug 2
+    severity: low
+    first_patched: 41.0.3
+  - name: Vulnerable OpenSSL included in cryptography wheels
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-v8gr-m533-ghj9
+    detected_date: Sep 22
+    severity: low
+    first_patched: 41.0.4
+  - name: Vulnerable OpenSSL included in cryptography wheels
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-5cpq-8wj7-hf2v
+    detected_date: Jun 3
+    severity: low
+    first_patched: 41.0.0
+- name: dataclasses-json
+  description: Easily serialize dataclasses to and from JSON
+  package_url: https://pypi.org/project/dataclasses-json
+  version: 0.5.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20519/default_ded6d17aa418fbd05ff28b85345c77ab878c6b37.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: filelock
+  description: A platform independent file lock
+  package_url: https://pypi.org/project/filelock
+  version: 3.12.0
+  license: Unlicense
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20204/default_645e4030c04804ccf56eaad54caf7b7a73a44c64.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: fonttools
+  description: Tools to manipulate font files
+  package_url: https://pypi.org/project/fonttools
+  version: 4.39.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20488/default_13373c456cf04faa5b7f33cd4c4095cbd571dfce.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: future
+  description: Clean single-source support for Python 3 and 2
+  package_url: https://pypi.org/project/future
+  version: 0.18.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19839/default_85689b353a3a9409328e253ea28d859d29151e0c.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: greenlet
+  description: Lightweight in-process concurrent programming
+  package_url: https://pypi.org/project/greenlet
+  version: 2.0.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20137/default_e3ea003987b13e5c9b8c9000c748b25a9c0d9ecd.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: idna
+  description: Internationalized Domain Names in Applications
+  package_url: https://pypi.org/project/idna
+  version: '3.4'
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19863/default_f24e00e4cb7620e436f9d06e0305070e1335922a.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: itsdangerous
+  description: Various helpers to pass data to untrusted environments and back
+  package_url: https://pypi.org/project/itsdangerous
+  version: 2.1.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19989/default_b1f1fc9c4c59a78443018e01395203ba8c61dcde.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: joblib
+  description: 'Lightweight pipelining: using Python functions as pipeline jobs'
+  package_url: https://pypi.org/project/joblib
+  version: 1.2.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20033/default_5a21cf44b42c3ef13f57dcd42ae753240ea7e808.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: kiwisolver
+  description: A fast implementation of the Cassowary constraint solver
+  package_url: https://pypi.org/project/kiwisolver
+  version: 1.4.4
+  license: Other
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20772/default_b92e3d801a6b8cc7a378e4f7c25f52a138a86391.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: langchain
+  description: Building applications with LLMs through composability
+  package_url: https://pypi.org/project/langchain
+  version: 0.0.157
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: LangChain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-39659
+    cve_url: https://github.com/advisories/GHSA-prgp-w7vf-ch62
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.325
+  - name: LangChain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-38896
+    cve_url: https://github.com/advisories/GHSA-92j5-3459-qgp4
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.236
+  - name: LangChain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-38860
+    cve_url: https://github.com/advisories/GHSA-fj32-q626-pjjc
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 
+  - name: langchain Code Injection vulnerability
+    cve_id: CVE-2023-36095
+    cve_url: https://github.com/advisories/GHSA-gwqq-6vq7-5j86
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.236
+  - name: Langchain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-34541
+    cve_url: https://github.com/advisories/GHSA-6643-h7h5-x9wh
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.247
+  - name: langchain arbitrary code execution vulnerability
+    cve_id: CVE-2023-36258
+    cve_url: https://github.com/advisories/GHSA-2qmj-7962-cjq8
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.247
+  - name: langchain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-36281
+    cve_url: https://github.com/advisories/GHSA-7gfq-f96f-g85j
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.312
+  - name: Langchain vulnerable to arbitrary code execution via the evaluate function
+      in the numexpr library
+    cve_id: CVE-2023-39631
+    cve_url: https://github.com/advisories/GHSA-f73w-4m7g-ch9x
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.308
+  - name: Langchain OS Command Injection vulnerability
+    cve_id: CVE-2023-34540
+    cve_url: https://github.com/advisories/GHSA-x32c-59v5-h7fg
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.225
+  - name: langchain vulnerable to arbitrary code execution
+    cve_id: CVE-2023-36188
+    cve_url: https://github.com/advisories/GHSA-57fc-8q82-gfp3
+    detected_date: Dec 8
+    severity: critical
+    first_patched: 0.0.236
+  - name: LangChain Server Side Request Forgery vulnerability
+    cve_id: CVE-2023-46229
+    cve_url: https://github.com/advisories/GHSA-655w-fm8m-m478
+    detected_date: Dec 8
+    severity: high
+    first_patched: 0.0.317
+  - name: langchain SQL Injection vulnerability
+    cve_id: CVE-2023-36189
+    cve_url: https://github.com/advisories/GHSA-7q94-qpjr-xpgm
+    detected_date: Dec 8
+    severity: high
+    first_patched: 
+  - name: Langchain Server-Side Request Forgery vulnerability
+    cve_id: CVE-2023-32786
+    cve_url: https://github.com/advisories/GHSA-6h8p-4hx9-w66c
+    detected_date: Dec 8
+    severity: high
+    first_patched: 0.0.329
+- name: marshmallow
+  description: A lightweight library for converting complex datatypes to and from
+    native Python datatypes
+  package_url: https://pypi.org/project/marshmallow
+  version: 3.19.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19893/default_f716e4bc541a9eb6e3f5b7a20d7c35355075b0b4.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: marshmallow-enum
+  description: Enum field for Marshmallow
+  package_url: https://pypi.org/project/marshmallow-enum
+  version: 1.5.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20691/default_e101f630b218074f7e0ffedc3ee839844bbf811d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: multidict
+  description: Multidict implementation
+  package_url: https://pypi.org/project/multidict
+  version: 6.0.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20160/default_8822b1755ae0c97a622ebcb1aa9cafa328004f81.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: numexpr
+  description: Fast numerical expression evaluator for NumPy
+  package_url: https://pypi.org/project/numexpr
+  version: 2.8.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20289/default_bae4ec34e549383af798a405820088989f617ff0.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: openai
+  description: The official Python library for the openai API
+  package_url: https://pypi.org/project/openai
+  version: 0.27.6
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: packaging
+  description: Core utilities for Python packages
+  package_url: https://pypi.org/project/packaging
+  version: '23.1'
+  license: BSD-3-Clause,Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19894/default_f716e4bc541a9eb6e3f5b7a20d7c35355075b0b4.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pandas
+  description: Powerful data structures for data analysis
+  package_url: https://pypi.org/project/pandas
+  version: 2.0.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19837/default_85689b353a3a9409328e253ea28d859d29151e0c.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pathspec
+  description: Utility library for gitignore style pattern matching of file paths
+  package_url: https://pypi.org/project/pathspec
+  version: 0.11.1
+  license: MPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20261/default_24e344cf78482d8a66297ae9ebea86f00b570483.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: plotly
+  description: An open-source, interactive graphing library for Python
+  package_url: https://pypi.org/project/plotly
+  version: 5.14.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20062/default_7d86b2789b7e98a881e37db483c09c6a1aa3e995.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pycparser
+  description: C parser in Python
+  package_url: https://pypi.org/project/pycparser
+  version: '2.21'
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20072/default_d7fc4eabe57370d13c2a8ad2f7f6bb876c96c66d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pydantic
+  description: Data validation and settings management using python 3.6 type hinting
+  package_url: https://pypi.org/project/pydantic
+  version: 1.10.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20022/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pyodbc
+  description: DB API Module for ODBC
+  package_url: https://pypi.org/project/pyodbc
+  version: 4.0.39
+  license: MIT-0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20110/default_534fc53c55ef7fbc50263daa8ea6618be3c2b37d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pyparsing
+  description: Python parsing module
+  package_url: https://pypi.org/project/pyparsing
+  version: 3.0.9
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19881/default_2270bfab784e3d2c2d999d26b11ee478a9dad238.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: python-dateutil
+  description: Extensions to the standard Python datetime module
+  package_url: https://pypi.org/project/python-dateutil
+  version: 2.8.2
+  license: NRL
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19833/default_58dbe7b4d7ec447b62773209af0f9a31bbabf5bd.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: python-dotenv
+  description: Add .env support to your django/flask apps in development and deployments
+  package_url: https://pypi.org/project/python-dotenv
+  version: 1.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: pytz
+  description: World timezone definitions, modern and historical
+  package_url: https://pypi.org/project/pytz
+  version: '2023.3'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19841/default_bb711fa267b2329ed689711a5adb7d9e74610b20.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: regex
+  description: Alternative regular expression module, to replace re
+  package_url: https://pypi.org/project/regex
+  version: 2023.5.5
+  license: Python-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19923/default_c8be5290cb8d8a8b578535a2c6475d1057ff4ea4.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: requests
+  description: Python HTTP for Humans
+  package_url: https://pypi.org/project/requests
+  version: 2.29.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19826/default_d7c684bf2673f008a9f02ac93901229297a22d7e.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: Unintended leak of Proxy-Authorization header in requests
+    cve_id: CVE-2023-32681
+    cve_url: https://github.com/advisories/GHSA-j8r2-6x86-q33q
+    detected_date: May 23
+    severity: moderate
+    first_patched: 2.31.0
+- name: requests-file
+  description: File transport adapter for Requests
+  package_url: https://pypi.org/project/requests-file
+  version: 1.5.1
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20788/default_dcde61c1b3c059a49681f0b775a8b73e0d122383.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: scikit-learn
+  description: A set of python modules for machine learning and data mining
+  package_url: https://pypi.org/project/scikit-learn
+  version: 1.2.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19898/default_4343f8bba4f6051641ffca8b4fbe9b099402c84d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: six
+  description: Python 2 and 3 compatibility utilities
+  package_url: https://pypi.org/project/six
+  version: 1.16.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19827/default_74a61b43bdb9fc0cba2978316b9976f43545029b.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: tenacity
+  description: Retry code until it succeeds
+  package_url: https://pypi.org/project/tenacity
+  version: 8.2.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20027/default_fd02050783f95269bfcc5c4d11f1c75dd423cd1d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: tldextract
+  description: Accurately separate the TLD from the registered domain and subdomains
+    of a URL, using the Public Suffix List
+  package_url: https://pypi.org/project/tldextract
+  version: 3.4.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20144/default_6c1e0b996cf8d609b9385da5f7856330bcaff137.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: tqdm
+  description: Fast, Extensible Progress Meter
+  package_url: https://pypi.org/project/tqdm
+  version: 4.65.0
+  license: MPL-2.0,MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19846/default_accee5d2b8ed75c2245f13504daf75b1cbc8cc9f.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: typing-inspect
+  description: Runtime inspection utilities for typing module
+  package_url: https://pypi.org/project/typing-inspect
+  version: 0.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: urllib3
+  description: HTTP library with thread-safe connection pooling
+  package_url: https://pypi.org/project/urllib3
+  version: 1.26.15
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19842/default_4604ff5dcb7f4d9c7b3833591c2142493951b19c.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+  vulnerabilities:
+  - name: urllib3's request body not stripped after redirect from 303 status changes
+      request method to GET
+    cve_id: CVE-2023-45803
+    cve_url: https://github.com/advisories/GHSA-g4mx-q9vg-27p4
+    detected_date: Oct 18
+    severity: moderate
+    first_patched: 1.26.18
+  - name: "`Cookie` HTTP header isn't stripped on cross-origin redirects"
+    cve_id: CVE-2023-43804
+    cve_url: https://github.com/advisories/GHSA-v845-jxx5-vc9f
+    detected_date: Oct 3
+    severity: moderate
+    first_patched: 1.26.17
+- name: wrapt
+  description: Module for decorators, wrappers and monkey patching
+  package_url: https://pypi.org/project/wrapt
+  version: 1.15.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19946/default_0b0a94e1bdf3e64deeccb23892ca2335bdc30e4f.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: yarl
+  description: Yet another URL library
+  package_url: https://pypi.org/project/yarl
+  version: 1.9.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20083/default_d8789f2f1b5b4e9994bef68371453a20460b4d6e.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: zope.event
+  description: Very basic event publishing system
+  package_url: https://pypi.org/project/zope.event
+  version: '4.6'
+  license: ZPL-2.1
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20546/default_cde277f9f5ddb25ccf86d553790fb97f5a8f825c.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: zope.interface
+  description: Interfaces for Python
+  package_url: https://pypi.org/project/zope.interface
+  version: '6.0'
+  license: ZPL-2.1
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19905/default_3846e1a96a2a21d085febee35b98cbcb22994ee7.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/server/requirements.txt
+  detection_source: server/requirements.txt
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-14 07:25:49.000000000 Z
+- name: "@testing-library/jest-dom"
+  description: Custom jest matchers to test the state of the DOM
+  package_url: https://www.npmjs.com/@testing-library/jest-dom
+  version: 5.16.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17424/default_1cdcda15ebb7caed879f8340bc212b44c4ec9dac.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-11 17:21:18.000000000 Z
+- name: "@testing-library/react"
+  description: Simple and complete React DOM testing utilities that encourage good
+    testing practices
+  package_url: https://www.npmjs.com/@testing-library/react
+  version: 13.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16549/default_d522554c6a41cb28d922d6d3ad32ad4afa0e3bb5.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 27.5.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 16.18.26
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: "@types/react"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react
+  version: 18.2.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15894/default_1d65e37e65b7f80761374f0202776043277d505d.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: "@types/react-dom"
+  description: TypeScript definitions for React
+  package_url: https://www.npmjs.com/@types/react-dom
+  version: 18.2.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15946/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: "@types/uuid"
+  description: TypeScript definitions for uuid
+  package_url: https://www.npmjs.com/@types/uuid
+  version: 9.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16257/default_ab17554b7e80af3d234b14168ed61e75d43f8eee.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: react-icons
+  description: SVG React icons of popular icon packs using ES6 imports
+  package_url: https://www.npmjs.com/react-icons
+  version: 4.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16909/default_7b9968788548874538c601457e8dcd9c74bd2051.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: react-redux
+  description: Official React bindings for Redux
+  package_url: https://www.npmjs.com/react-redux
+  version: 8.0.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15984/default_f49d4c116f8ea0155f4d92673b084378bba02760.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
+- name: react-router-dom
+  description: DOM bindings for React Router
+  package_url: https://www.npmjs.com/react-router-dom
+  version: 6.11.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16025/default_e25d1fbb04a118c79fb444294461417342bd03bf.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: react-scripts
+  description: Configuration and scripts for Create React App
+  package_url: https://www.npmjs.com/react-scripts
+  version: 5.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15985/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-22 14:18:07.000000000 Z
+- name: uuid
+  description: RFC4122
+  package_url: https://www.npmjs.com/uuid
+  version: 8.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
+  detection_source_url: https://github.com/deepak2431/issue_gpt/blob/main/client/package-lock.json
+  detection_source: client/package.json
+  last_updated_by: deepak2431
+  last_updated_on: 2023-05-25 15:45:26.000000000 Z
