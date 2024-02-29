@@ -3,30 +3,30 @@
 ## Tech Stack
 deepak2431/issue_gpt is built on the following main stack:
 
-- [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- [Jinja](https://palletsprojects.com/p/jinja/) – Templating Languages & Extensions
 - [Python](https://www.python.org) – Languages
+- [TypeScript](http://www.typescriptlang.org) – Languages
+- [Matplotlib](http://matplotlib.org) – Charting Libraries
 - [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
 - [React](https://reactjs.org/) – Javascript UI Libraries
-- [Redis](http://redis.io/) – In-Memory Databases
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- [TypeScript](http://www.typescriptlang.org) – Languages
-- [gevent](http://gevent.org) – Web Servers
-- [SQLAlchemy](http://www.sqlalchemy.org/) – Object Relational Mapper (ORM)
-- [NumPy](http://www.numpy.org/) – Data Science Tools
-- [Jinja](https://palletsprojects.com/p/jinja/) – Templating Languages & Extensions
-- [Pillow](https://python-pillow.github.io/) – Image Processing and Management
-- [Matplotlib](http://matplotlib.org) – Charting Libraries
-- [SciPy](http://www.scipy.org) – Data Science Tools
 - [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
-- [Redux](https://redux.js.org/) – State Management Library
-- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 - [Recharts](http://recharts.org/) – Charting Libraries
-- [Alpine Linux](https://www.alpinelinux.org/) – Operating Systems
+- [Redux](https://redux.js.org/) – State Management Library
+- [Redis](http://redis.io/) – In-Memory Databases
 - [Redux Persist](https://github.com/rt2zz/redux-persist) – Mobile Database
-- [Zope](https://www.zope.org) – Web Servers
-- [Prettier](https://prettier.io/) – Code Review
-- [OpenAI](https://openai.com/) – Large Language Models
+- [SQLAlchemy](http://www.sqlalchemy.org/) – Object Relational Mapper (ORM)
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
+- [Prettier](https://prettier.io/) – Code Review
+- [Zope](https://www.zope.org) – Web Servers
+- [gevent](http://gevent.org) – Web Servers
+- [Pillow](https://python-pillow.github.io/) – Image Processing and Management
+- [Alpine Linux](https://www.alpinelinux.org/) – Operating Systems
+- [NumPy](http://www.numpy.org/) – Data Science Tools
+- [OpenAI](https://openai.com/) – Large Language Models
+- [SciPy](http://www.scipy.org) – Data Science Tools
+- [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -36,30 +36,30 @@ Full tech stack [here](/techstack.md)
 ## Tech Stack
 deepak2431/issue_gpt is built on the following main stack:
 
-- <img width='25' height='25' src='https://img.stackshare.io/service/830/jest.png' alt='Jest'/> [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
+- <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/2303/New_Project__20_.png' alt='Jinja'/> [Jinja](https://palletsprojects.com/p/jinja/) – Templating Languages & Extensions
 - <img width='25' height='25' src='https://img.stackshare.io/service/993/pUBY5pVj.png' alt='Python'/> [Python](https://www.python.org) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/1612/bynNY5dJ.jpg' alt='TypeScript'/> [TypeScript](http://www.typescriptlang.org) – Languages
+- <img width='25' height='25' src='https://img.stackshare.io/service/2993/2DZC4KaA_400x400.jpg' alt='Matplotlib'/> [Matplotlib](http://matplotlib.org) – Charting Libraries
 - <img width='25' height='25' src='https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png' alt='Node.js'/> [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png' alt='Redis'/> [Redis](http://redis.io/) – In-Memory Databases
-- <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1612/bynNY5dJ.jpg' alt='TypeScript'/> [TypeScript](http://www.typescriptlang.org) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/1772/s9Bm2Iyx_400x400.jpg' alt='gevent'/> [gevent](http://gevent.org) – Web Servers
-- <img width='25' height='25' src='https://img.stackshare.io/service/1839/q5uAkmy7.png' alt='SQLAlchemy'/> [SQLAlchemy](http://www.sqlalchemy.org/) – Object Relational Mapper (ORM)
-- <img width='25' height='25' src='https://img.stackshare.io/service/2179/default_332f874a2edb2686f578aa6389313efcea1eec41.png' alt='NumPy'/> [NumPy](http://www.numpy.org/) – Data Science Tools
-- <img width='25' height='25' src='https://img.stackshare.io/service/2303/New_Project__20_.png' alt='Jinja'/> [Jinja](https://palletsprojects.com/p/jinja/) – Templating Languages & Extensions
-- <img width='25' height='25' src='https://img.stackshare.io/service/2375/default_1f67b0ca7416a9f52beb655f90b5602d5ef74b75.jpg' alt='Pillow'/> [Pillow](https://python-pillow.github.io/) – Image Processing and Management
-- <img width='25' height='25' src='https://img.stackshare.io/service/2993/2DZC4KaA_400x400.jpg' alt='Matplotlib'/> [Matplotlib](http://matplotlib.org) – Charting Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/3303/scipyshiny_small.png' alt='SciPy'/> [SciPy](http://www.scipy.org) – Data Science Tools
 - <img width='25' height='25' src='https://img.stackshare.io/service/3350/8261421.png' alt='React Router'/> [React Router](https://github.com/rackt/react-router) – JavaScript Framework Components
-- <img width='25' height='25' src='https://img.stackshare.io/service/4074/13142323.png' alt='Redux'/> [Redux](https://redux.js.org/) – State Management Library
-- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 - <img width='25' height='25' src='https://img.stackshare.io/service/5608/13690587.png' alt='Recharts'/> [Recharts](http://recharts.org/) – Charting Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/6429/alpine_linux.png' alt='Alpine Linux'/> [Alpine Linux](https://www.alpinelinux.org/) – Operating Systems
+- <img width='25' height='25' src='https://img.stackshare.io/service/4074/13142323.png' alt='Redux'/> [Redux](https://redux.js.org/) – State Management Library
+- <img width='25' height='25' src='https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png' alt='Redis'/> [Redis](http://redis.io/) – In-Memory Databases
 - <img width='25' height='25' src='https://img.stackshare.io/service/6740/no-img-open-source.png' alt='Redux Persist'/> [Redux Persist](https://github.com/rt2zz/redux-persist) – Mobile Database
-- <img width='25' height='25' src='https://img.stackshare.io/service/6969/zopeHIres_400x400.jpg' alt='Zope'/> [Zope](https://www.zope.org) – Web Servers
-- <img width='25' height='25' src='https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg' alt='Prettier'/> [Prettier](https://prettier.io/) – Code Review
-- <img width='25' height='25' src='https://img.stackshare.io/service/48786/default_8b1119bcbb159cebebc2f6cfc9cd2e359b169d22.jpg' alt='OpenAI'/> [OpenAI](https://openai.com/) – Large Language Models
+- <img width='25' height='25' src='https://img.stackshare.io/service/1839/q5uAkmy7.png' alt='SQLAlchemy'/> [SQLAlchemy](http://www.sqlalchemy.org/) – Object Relational Mapper (ORM)
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
+- <img width='25' height='25' src='https://img.stackshare.io/service/830/jest.png' alt='Jest'/> [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
+- <img width='25' height='25' src='https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg' alt='Prettier'/> [Prettier](https://prettier.io/) – Code Review
+- <img width='25' height='25' src='https://img.stackshare.io/service/6969/zopeHIres_400x400.jpg' alt='Zope'/> [Zope](https://www.zope.org) – Web Servers
+- <img width='25' height='25' src='https://img.stackshare.io/service/1772/s9Bm2Iyx_400x400.jpg' alt='gevent'/> [gevent](http://gevent.org) – Web Servers
+- <img width='25' height='25' src='https://img.stackshare.io/service/2375/default_1f67b0ca7416a9f52beb655f90b5602d5ef74b75.jpg' alt='Pillow'/> [Pillow](https://python-pillow.github.io/) – Image Processing and Management
+- <img width='25' height='25' src='https://img.stackshare.io/service/6429/alpine_linux.png' alt='Alpine Linux'/> [Alpine Linux](https://www.alpinelinux.org/) – Operating Systems
+- <img width='25' height='25' src='https://img.stackshare.io/service/2179/default_332f874a2edb2686f578aa6389313efcea1eec41.png' alt='NumPy'/> [NumPy](http://www.numpy.org/) – Data Science Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/48786/default_8b1119bcbb159cebebc2f6cfc9cd2e359b169d22.jpg' alt='OpenAI'/> [OpenAI](https://openai.com/) – Large Language Models
+- <img width='25' height='25' src='https://img.stackshare.io/service/3303/scipyshiny_small.png' alt='SciPy'/> [SciPy](http://www.scipy.org) – Data Science Tools
+- <img width='25' height='25' src='https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png' alt='Shell'/> [Shell](https://en.wikipedia.org/wiki/Shell_script) – Shells
 
 Full tech stack [here](/techstack.md)
 
@@ -70,7 +70,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [deepak2431/issue_gpt](https://github.com/deepak2431/issue_gpt)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|105<br/>Tools used|01/05/24 <br/>Report generated|
+|105<br/>Tools used|02/29/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -346,7 +346,7 @@ Full tech stack [here](/techstack.md)
 |[PySocks](https://pypi.org/project/PySocks)|v1.7.1|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[PyYAML](https://pypi.org/project/PyYAML)|v6.0|05/14/23|deepak2431 |MIT|N/A|
 |[Werkzeug](https://pypi.org/project/Werkzeug)|v2.3.3|05/14/23|deepak2431 |BSD-3-Clause|N/A|
-|[aiohttp](https://pypi.org/project/aiohttp)|v3.8.4|05/14/23|deepak2431 |Apache-2.0|[CVE-2023-49081](https://github.com/advisories/GHSA-q3qx-c6g2-7pw2) (High)<br/>[](https://github.com/advisories/GHSA-pjjw-qhg8-p2p9) (Moderate)<br/>[CVE-2023-49082](https://github.com/advisories/GHSA-qvrw-v9rv-5rjx) (Moderate)<br/>[CVE-2023-47627](https://github.com/advisories/GHSA-gfw2-4jvh-wgfg) (Moderate)<br/>[CVE-2023-37276](https://github.com/advisories/GHSA-45c4-8wx5-qw6w) (Moderate)|
+|[aiohttp](https://pypi.org/project/aiohttp)|v3.8.4|05/14/23|deepak2431 |Apache-2.0|[CVE-2023-49081](https://github.com/advisories/GHSA-q3qx-c6g2-7pw2) (High)<br/>[CVE-2024-23334](https://github.com/advisories/GHSA-5h86-8mv2-jq9f) (Moderate)<br/>[CVE-2023-47627](https://github.com/advisories/GHSA-gfw2-4jvh-wgfg) (Moderate)<br/>[](https://github.com/advisories/GHSA-pjjw-qhg8-p2p9) (Moderate)<br/>[CVE-2023-49082](https://github.com/advisories/GHSA-qvrw-v9rv-5rjx) (Moderate)<br/>[CVE-2023-37276](https://github.com/advisories/GHSA-45c4-8wx5-qw6w) (Moderate)<br/>[CVE-2024-23829](https://github.com/advisories/GHSA-8qpw-xqxj-h4r2) (Moderate)|
 |[aniso8601](https://pypi.org/project/aniso8601)|v9.0.1|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[async-timeout](https://pypi.org/project/async-timeout)|v4.0.2|05/14/23|deepak2431 |Apache-2.0|N/A|
 |[asyncio](https://pypi.org/project/asyncio)|v3.4.3|05/14/23|deepak2431 |Python-2.0|N/A|
@@ -358,17 +358,17 @@ Full tech stack [here](/techstack.md)
 |[charset-normalizer](https://pypi.org/project/charset-normalizer)|v3.1.0|05/14/23|deepak2431 |N/A|N/A|
 |[click](https://pypi.org/project/click)|v8.1.3|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[colorama](https://pypi.org/project/colorama)|v0.4.6|05/14/23|deepak2431 |BSD-3-Clause|N/A|
-|[cryptography](https://pypi.org/project/cryptography)|v40.0.2|05/14/23|deepak2431 |BSD-3-Clause,Apache-2.0|[CVE-2023-38325](https://github.com/advisories/GHSA-cf7p-gm2m-833m) (High)<br/>[CVE-2023-49083](https://github.com/advisories/GHSA-jfhm-5ghh-2f97) (Moderate)<br/>[](https://github.com/advisories/GHSA-jm77-qphf-c4w8) (Low)<br/>[](https://github.com/advisories/GHSA-v8gr-m533-ghj9) (Low)<br/>[](https://github.com/advisories/GHSA-5cpq-8wj7-hf2v) (Low)|
+|[cryptography](https://pypi.org/project/cryptography)|v40.0.2|05/14/23|deepak2431 |BSD-3-Clause,Apache-2.0|[CVE-2024-26130](https://github.com/advisories/GHSA-6vqw-3v5j-54x4) (High)<br/>[CVE-2023-38325](https://github.com/advisories/GHSA-cf7p-gm2m-833m) (High)<br/>[CVE-2023-50782](https://github.com/advisories/GHSA-3ww4-gg4f-jr7f) (High)<br/>[CVE-2023-49083](https://github.com/advisories/GHSA-jfhm-5ghh-2f97) (Moderate)<br/>[CVE-2024-0727](https://github.com/advisories/GHSA-9v9h-cgj8-h64p) (Moderate)<br/>[](https://github.com/advisories/GHSA-v8gr-m533-ghj9) (Low)<br/>[](https://github.com/advisories/GHSA-5cpq-8wj7-hf2v) (Low)<br/>[](https://github.com/advisories/GHSA-jm77-qphf-c4w8) (Low)|
 |[dataclasses-json](https://pypi.org/project/dataclasses-json)|v0.5.7|05/14/23|deepak2431 |MIT|N/A|
 |[filelock](https://pypi.org/project/filelock)|v3.12.0|05/14/23|deepak2431 |Unlicense|N/A|
-|[fonttools](https://pypi.org/project/fonttools)|v4.39.3|05/14/23|deepak2431 |MIT|N/A|
+|[fonttools](https://pypi.org/project/fonttools)|v4.39.3|05/14/23|deepak2431 |MIT|[CVE-2023-45139](https://github.com/advisories/GHSA-6673-4983-2vx5) (High)|
 |[future](https://pypi.org/project/future)|v0.18.3|05/14/23|deepak2431 |MIT|N/A|
 |[greenlet](https://pypi.org/project/greenlet)|v2.0.2|05/14/23|deepak2431 |MIT|N/A|
 |[idna](https://pypi.org/project/idna)|v3.4|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[itsdangerous](https://pypi.org/project/itsdangerous)|v2.1.2|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[joblib](https://pypi.org/project/joblib)|v1.2.0|05/14/23|deepak2431 |BSD-3-Clause|N/A|
 |[kiwisolver](https://pypi.org/project/kiwisolver)|v1.4.4|05/14/23|deepak2431 |Other|N/A|
-|[langchain](https://pypi.org/project/langchain)|v0.0.157|05/14/23|deepak2431 |N/A|[CVE-2023-39659](https://github.com/advisories/GHSA-prgp-w7vf-ch62) (Critical)<br/>[CVE-2023-38896](https://github.com/advisories/GHSA-92j5-3459-qgp4) (Critical)<br/>[CVE-2023-38860](https://github.com/advisories/GHSA-fj32-q626-pjjc) (Critical)<br/>[CVE-2023-36095](https://github.com/advisories/GHSA-gwqq-6vq7-5j86) (Critical)<br/>[CVE-2023-34541](https://github.com/advisories/GHSA-6643-h7h5-x9wh) (Critical)<br/>[CVE-2023-36258](https://github.com/advisories/GHSA-2qmj-7962-cjq8) (Critical)<br/>[CVE-2023-36281](https://github.com/advisories/GHSA-7gfq-f96f-g85j) (Critical)<br/>[CVE-2023-39631](https://github.com/advisories/GHSA-f73w-4m7g-ch9x) (Critical)<br/>[CVE-2023-34540](https://github.com/advisories/GHSA-x32c-59v5-h7fg) (Critical)<br/>[CVE-2023-36188](https://github.com/advisories/GHSA-57fc-8q82-gfp3) (Critical)<br/>[CVE-2023-46229](https://github.com/advisories/GHSA-655w-fm8m-m478) (High)<br/>[CVE-2023-36189](https://github.com/advisories/GHSA-7q94-qpjr-xpgm) (High)<br/>[CVE-2023-32786](https://github.com/advisories/GHSA-6h8p-4hx9-w66c) (High)|
+|[langchain](https://pypi.org/project/langchain)|v0.0.157|05/14/23|deepak2431 |N/A|[CVE-2023-38860](https://github.com/advisories/GHSA-fj32-q626-pjjc) (Critical)<br/>[CVE-2023-36095](https://github.com/advisories/GHSA-gwqq-6vq7-5j86) (Critical)<br/>[CVE-2023-34541](https://github.com/advisories/GHSA-6643-h7h5-x9wh) (Critical)<br/>[CVE-2023-36258](https://github.com/advisories/GHSA-2qmj-7962-cjq8) (Critical)<br/>[CVE-2023-36281](https://github.com/advisories/GHSA-7gfq-f96f-g85j) (Critical)<br/>[CVE-2023-39631](https://github.com/advisories/GHSA-f73w-4m7g-ch9x) (Critical)<br/>[CVE-2023-34540](https://github.com/advisories/GHSA-x32c-59v5-h7fg) (Critical)<br/>[CVE-2023-39659](https://github.com/advisories/GHSA-prgp-w7vf-ch62) (Critical)<br/>[CVE-2023-36188](https://github.com/advisories/GHSA-57fc-8q82-gfp3) (Critical)<br/>[CVE-2023-38896](https://github.com/advisories/GHSA-92j5-3459-qgp4) (Critical)<br/>[CVE-2023-32786](https://github.com/advisories/GHSA-6h8p-4hx9-w66c) (High)<br/>[CVE-2023-46229](https://github.com/advisories/GHSA-655w-fm8m-m478) (High)<br/>[CVE-2023-36189](https://github.com/advisories/GHSA-7q94-qpjr-xpgm) (High)<br/>[CVE-2024-0243](https://github.com/advisories/GHSA-h9j7-5xvc-qhg5) (Low)|
 |[marshmallow](https://pypi.org/project/marshmallow)|v3.19.0|05/14/23|deepak2431 |MIT|N/A|
 |[marshmallow-enum](https://pypi.org/project/marshmallow-enum)|v1.5.1|05/14/23|deepak2431 |MIT|N/A|
 |[multidict](https://pypi.org/project/multidict)|v6.0.4|05/14/23|deepak2431 |Apache-2.0|N/A|
